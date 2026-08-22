@@ -1,0 +1,11 @@
+# DEMO BUILD — indexing disallowed site-wide on purpose.
+# This build contains specimen inventory data, placeholder photography, and
+# certificate numbers that are deliberately not valid. It must never be indexed.
+#
+# At production launch: remove these rules, remove the noindex meta tag from
+# tools/partials/head.html, and add the sitemap reference below.
+
+User-agent: *
+Disallow: /
+
+# Sitemap: https://spgems-myanmar.com/sitemap.xml

@@ -1,0 +1,138 @@
+{
+  "_notice": "The five articles marked live:true are written out as full pages in this demo. The remaining seven are the rest of the twelve-article launch set specified in PRD §17.2 and are shown on /journal/learn as the editorial plan, not as links — §36.2 forbids 'coming soon' placeholder pages.",
+  "_targets": "FR-EDU-002 target length 1,200–2,000 words. The demo articles run shorter (900–1,300) to establish voice, structure and the inventory bridge; they need a final pass at full length before launch. FR-EDU-004 requires a named author with stated gemmological credentials — NEEDS CONFIRMATION from SP Gems, so bylines here are marked pending.",
+  "articles": [
+    {
+      "slug": "what-is-a-mogok-ruby",
+      "title": "What is a Mogok ruby, and why does origin matter?",
+      "category": "learn",
+      "priority": "P0",
+      "standfirst": "Mogok is a valley, a geology and a price. Here is what separates it from the broader Burmese designation, and how a buyer can tell.",
+      "dateLabel": "August 2026",
+      "readMinutes": 7,
+      "imageShot": "Mogok valley, from the ridge",
+      "live": true
+    },
+    {
+      "slug": "heated-vs-unheated-gemstones",
+      "title": "Heated vs unheated: what gemstone treatment actually means",
+      "category": "learn",
+      "priority": "P0",
+      "standfirst": "The most common question we are asked, answered without a sales agenda: heating is legitimate, it must be disclosed, and it is not the same as being inferior.",
+      "dateLabel": "August 2026",
+      "readMinutes": 8,
+      "imageShot": "Rough ruby before and after heating",
+      "live": true
+    },
+    {
+      "slug": "pigeons-blood-what-the-term-means",
+      "title": "\"Pigeon's blood\": what the term means, and who can use it",
+      "category": "learn",
+      "priority": "P0",
+      "standfirst": "One of the most misused phrases in the trade. It is a laboratory grade, not an adjective — and the difference is worth money.",
+      "dateLabel": "July 2026",
+      "readMinutes": 6,
+      "imageShot": "Vivid red ruby under daylight",
+      "live": true
+    },
+    {
+      "slug": "how-to-read-a-gemstone-laboratory-report",
+      "title": "How to read a gemstone laboratory report",
+      "category": "learn",
+      "priority": "P0",
+      "standfirst": "A field guide to the document that decides the price: what each section is actually asserting, and what it deliberately is not.",
+      "dateLabel": "July 2026",
+      "readMinutes": 9,
+      "imageShot": "Laboratory report, detail",
+      "live": true
+    },
+    {
+      "slug": "carat-weight-vs-visual-size",
+      "title": "Carat weight vs visual size",
+      "category": "learn",
+      "priority": "P1",
+      "standfirst": "Why two stones of identical carat weight can look a full size apart, and why the heavier one is not always the better buy.",
+      "dateLabel": "June 2026",
+      "readMinutes": 5,
+      "imageShot": "Two stones of equal weight, side by side",
+      "live": true
+    },
+    {
+      "slug": "natural-synthetic-and-treated",
+      "title": "Natural, synthetic, and treated: telling them apart",
+      "category": "learn",
+      "priority": "P0",
+      "standfirst": "The three categories a buyer must be able to distinguish, and the tests that actually separate them.",
+      "dateLabel": "",
+      "readMinutes": 8,
+      "imageShot": "",
+      "live": false
+    },
+    {
+      "slug": "burmese-sapphire-beyond-kashmir-and-ceylon",
+      "title": "Burmese sapphire beyond Kashmir and Ceylon",
+      "category": "learn",
+      "priority": "P1",
+      "standfirst": "The velvety Mogok blue, and why it is judged on different terms from the two origins that dominate the conversation.",
+      "dateLabel": "",
+      "readMinutes": 7,
+      "imageShot": "",
+      "live": false
+    },
+    {
+      "slug": "spinel-the-stone-mistaken-for-ruby",
+      "title": "Spinel: the stone mistaken for ruby for a thousand years",
+      "category": "learn",
+      "priority": "P1",
+      "standfirst": "Some of the most famous rubies in history are spinels. That is a better story than it sounds.",
+      "dateLabel": "",
+      "readMinutes": 7,
+      "imageShot": "",
+      "live": false
+    },
+    {
+      "slug": "what-determines-the-value-of-a-coloured-gemstone",
+      "title": "What determines the value of a coloured gemstone",
+      "category": "learn",
+      "priority": "P1",
+      "standfirst": "Colour, then clarity, then cut, then weight — and why origin and treatment sit above all four.",
+      "dateLabel": "",
+      "readMinutes": 9,
+      "imageShot": "",
+      "live": false
+    },
+    {
+      "slug": "cut-quality-in-coloured-stones",
+      "title": "Cut quality in coloured stones: windows, extinction and brilliance",
+      "category": "learn",
+      "priority": "P1",
+      "standfirst": "The three faults a photograph can hide, and how to ask about them.",
+      "dateLabel": "",
+      "readMinutes": 8,
+      "imageShot": "",
+      "live": false
+    },
+    {
+      "slug": "how-to-buy-a-fine-gemstone",
+      "title": "How to buy a fine gemstone: a practical guide",
+      "category": "learn",
+      "priority": "P1",
+      "standfirst": "The sequence of questions worth asking, in the order worth asking them.",
+      "dateLabel": "",
+      "readMinutes": 10,
+      "imageShot": "",
+      "live": false
+    },
+    {
+      "slug": "caring-for-fine-gemstones-and-jewellery",
+      "title": "Caring for fine gemstones and jewellery",
+      "category": "learn",
+      "priority": "P2",
+      "standfirst": "What is safe, what is not, and what to never let a high-street cleaner near.",
+      "dateLabel": "",
+      "readMinutes": 6,
+      "imageShot": "",
+      "live": false
+    }
+  ]
+}

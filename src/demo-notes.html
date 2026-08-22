@@ -1,0 +1,346 @@
+<!--meta
+title: Demo Notes — SP Gems
+desc: What is real in this build and what is placeholder, which PRD decisions are implemented, and what SP Gems needs to supply next.
+nav: home
+css: catalogue.css
+-->
+<div class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span><span>Demo notes</span>
+    </nav>
+    <div class="phead__inner">
+      <p class="eyebrow eyebrow--gold">For SP Gems and the project team</p>
+      <h1 class="h1 phead__title mt-2">What this build is</h1>
+      <p class="lede phead__lede">
+        A design and content demo of the website specified in the SP Gems Website PRD v1.0. Its
+        job is to settle the design system, the information architecture, the page templates and
+        the data model &mdash; so that decisions get made against something real rather than
+        against a description.
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap wrap--text">
+
+    <div class="prose prose--wide" data-reveal>
+      <h2 style="margin-top:0">Read this first: there is no gemstone photography here</h2>
+      <p>
+        Not one image on this site is a photograph of a gemstone, and that is deliberate. §28.7 of
+        the PRD prohibits stock photography and AI-generated imagery of gemstones or jewellery
+        &ldquo;under any circumstances,&rdquo; on the grounds that in a category whose entire
+        premise is authenticity, a synthetic image found by a customer would be commercially
+        catastrophic. We agree, so we did not fake any.
+      </p>
+      <p>
+        Instead, every image slot renders a <strong>specimen plate</strong>: the gemmological
+        neutral mid-grey ground specified in FR-CAT-040 (#8A8A8A), at the true aspect ratio the
+        slot will use, carrying the shot specification for that slot. So the layout is honest about
+        proportions and weight, and every placeholder doubles as a photography brief. Zoom into any
+        stone's gallery and you will find the actual shot list.
+      </p>
+      <p>
+        Photography is the critical-path dependency for this project, and it is where the PRD
+        expects it to fail. Twenty perfectly photographed stones beat two hundred poorly
+        photographed ones, commercially and for the brand.
+      </p>
+    </div>
+
+    <hr class="rule mt-8 mb-8">
+
+    <div data-reveal>
+      <h2 class="h2">What is real</h2>
+      <table class="spec-table mt-4">
+        <tbody>
+          <tr>
+            <th scope="row" style="width:34%">The design system</th>
+            <td>
+              Real and complete. Every colour token, the type scale, the spacing scale, the motion
+              durations and easings, and the component rules are implemented exactly as specified in
+              §28 &mdash; including the prohibitions: no gradients except a hero scrim, no
+              glassmorphism, no shadows on cards, nothing above a 2px corner radius, no carousels
+              for primary content, no pop-up newsletter. Lifts straight into the production build.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">The information architecture</th>
+            <td>
+              Real. The six-item navigation of §9.2, the mega-menu structure of §9.3, and the URL
+              structure of §10 including the gemstone slug pattern.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">The data model</th>
+            <td>
+              Real. <code>data/gemstones.json</code> mirrors the complete field specification of
+              §12.3 field for field, so it maps one-to-one onto the Payload CMS collection.
+              Same for jewellery against §14.2.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">The templates and behaviour</th>
+            <td>
+              Real and working: faceted filtering with URL state, live counts, disabled
+              zero-result options, applied-filter chips, pagination, the diagnostic zero-result
+              state, sorting, the full-screen viewer with all four zoom inputs, keyboard
+              navigation and focus management, the contextual enquiry modal, the glossary
+              disclosures, the multi-step forms with session persistence, and typo-tolerant search.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">The editorial voice</th>
+            <td>
+              Real, and the thing most worth reviewing. The five education articles, the Mogok
+              pages, and the sourcing and compliance pages are written as we would actually
+              publish them.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-8" data-reveal>
+      <h2 class="h2">What is not real</h2>
+      <table class="spec-table mt-4">
+        <tbody>
+          <tr>
+            <th scope="row" style="width:34%">The inventory</th>
+            <td>
+              Twenty specimen stones and six specimen pieces. Structurally complete, commercially
+              fictional. Certificate numbers use the literal placeholder pattern
+              <span class="tnum">GRS20XX-XXXXXX</span> and are deliberately not valid, verifiable
+              report numbers &mdash; nothing here should ever be published.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">All photography</th>
+            <td>See above. Every image is a specimen plate carrying its own shot brief.</td>
+          </tr>
+          <tr>
+            <th scope="row">The forms</th>
+            <td>
+              No backend. Submitting renders the confirmation state with a reference number and
+              logs the payload to the browser console. Nothing is sent and nothing is stored.
+              File upload is not wired at all &mdash; it needs a server, and §15.4's security
+              requirements are not optional.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">The CMS</th>
+            <td>
+              Not present. Content is edited as JSON and HTML, and the site is generated by
+              <code>tools/build.ps1</code>. Payload CMS is a production concern.
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Seven of twelve articles</th>
+            <td>
+              Five of the twelve-article launch set are written out in full. The remaining seven
+              appear on the Learn hub as the editorial plan, not as empty pages &mdash; §36.2 is
+              explicit that a luxury site with placeholder pages is not a luxury site.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="rule mt-8 mb-8">
+
+    <div class="prose prose--wide" data-reveal>
+      <h2 style="margin-top:0">The stack, and why it is not the recommended one</h2>
+      <p>
+        §35 recommends Next.js with Payload CMS 3, PostgreSQL and object storage. That remains
+        the right recommendation for production and nothing here argues against it.
+      </p>
+      <p>
+        This demo is static HTML, hand-written CSS and vanilla JavaScript, assembled by a
+        PowerShell generator. Three reasons. It deploys to Vercel with no build step and no
+        database, so a reviewer can look at it immediately. It needs no Node toolchain, which the
+        machine this was built on does not have. And a demo's job is to settle design, IA and
+        data-model questions &mdash; none of which are stack-dependent.
+      </p>
+      <p>
+        Everything here transfers. The CSS is a token file. The data is JSON matching the CMS field
+        spec. The JavaScript is framework-free and describes the interaction contract precisely
+        enough to reimplement as React components without guessing.
+      </p>
+
+      <h2>PRD decisions this build takes a position on</h2>
+      <ul>
+        <li>
+          <strong>No cart, anywhere.</strong> Enquiry-first throughout, with exactly one visually
+          primary CTA per detail page and messaging channels as clearly secondary options that
+          carry the stone reference into the message.
+        </li>
+        <li>
+          <strong>Specifications public, three things gated.</strong> Carat, dimensions, shape,
+          colour, clarity, origin region, treatment status, laboratory name and report number are
+          all public. Full certificate scans, full-resolution imagery and per-carat pricing are not.
+        </li>
+        <li>
+          <strong>Price bands rather than pure POR.</strong> So buyers can self-qualify and so the
+          price filter actually works. The exceptional tier stays on request.
+        </li>
+        <li>
+          <strong>Treatment disclosure on every page, equally prominent whether heated or not.</strong>
+          This is the single most important trust decision in the build. A disclosure that only
+          appears when the news is good is not a disclosure.
+        </li>
+        <li>
+          <strong>Three steps for commissions, not nine.</strong> All skippable, with a persistent
+          escape hatch to the contact step.
+        </li>
+        <li>
+          <strong>Request-and-confirm consultations, not live booking.</strong> A booking system
+          offering slots nobody attends is worse than an honest request form.
+        </li>
+        <li>
+          <strong>No invented content.</strong> No fabricated clients, testimonials, press,
+          credentials, awards, collections or ethics claims. Where the PRD marks something
+          <em>needs confirmation</em>, this build shows a visible note rather than plausible copy.
+          Those notes are the shopping list.
+        </li>
+        <li>
+          <strong>Section 10 of the homepage is absent.</strong> Not an omission: FR-HOME-001 hides
+          the news section automatically when the newest item is more than 120 days old. That rule
+          is the structural fix for a site whose latest news is a sale from 2017, still written in
+          the future tense.
+        </li>
+      </ul>
+
+      <h2>Things the current site should fix this week, regardless</h2>
+      <p>
+        §4.4 lists seven defects visible to every visitor today that cost hours rather than weeks.
+        Five are worth doing immediately and independently of this project: the social links
+        pointing at the literal string <code>http://url</code>; the footer reading
+        &ldquo;All right reserved 2015&rdquo; and misspelling &ldquo;Jewellery&rdquo;; the 2017
+        sale still promoted in the present tense; the live WooCommerce login with no products
+        behind it and no legitimate users; and the two Gmail addresses handling all correspondence.
+      </p>
+    </div>
+
+    <hr class="rule mt-8 mb-8">
+
+    <div data-reveal>
+      <h2 class="h2">What we need from SP Gems, in order</h2>
+      <ol class="process mt-4">
+        <li>
+          <div>
+            <h3>Photography</h3>
+            <p>
+              The critical path. Commission a photography standard document and a pilot shoot of
+              twenty stones before development begins. Neutral mid-grey ground, colour reference
+              target in the calibration frame, 4000px minimum on the long edge, three images
+              minimum per stone and five to eight as the target, with a second lighting condition
+              for ruby, sapphire and spinel. Then answer: does product photography already exist,
+              at what resolution, who owns the rights, and is there in-house capability?
+            </p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Inventory data</h3>
+            <p>
+              Sixty stones minimum and fifteen jewellery pieces at launch. Below roughly forty the
+              catalogue does not feel like a collection and the filters have nothing to do. Every
+              stone needs the full §12.3 record &mdash; and treatment status is non-negotiable:
+              publishing is blocked without it.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Company identity</h3>
+            <p>
+              Registered name, company number, jurisdiction. A professional domain email to replace
+              the Gmail addresses. Named team members with photographs, including whoever answers
+              enquiries. Any gemmological credentials held by anyone in the business &mdash; if
+              they exist they are a significant and currently unstated asset.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Legal and compliance input</h3>
+            <p>
+              Current professional advice on which markets can be served and on what documentary
+              basis. Counsel review of the sourcing page, the international purchasing page, the
+              privacy notice, the terms and the cookie policy. This blocks launch content, not
+              development start.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Process answers</h3>
+            <p>
+              What payment routes are actually available. Which carrier and what insurance cover.
+              Which countries are served. The real commission process, its timeline and its
+              deposit terms. Business hours, working days and holiday closures. Every one of these
+              is a question a buyer asks in their first two emails.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Collection decisions</h3>
+            <p>
+              Is &ldquo;The Value&rdquo; a collection, a sub-brand, or the jewellery house name?
+              This materially affects the information architecture. Which pieces are the eight
+              uncaptioned images on the current site, and are they still available? Does the Lilac
+              Flower Collection exist &mdash; it is referenced once, in a video caption, with no
+              page, images or description.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Operational ownership</h3>
+            <p>
+              The one that quietly kills projects like this. Who at SP Gems photographs stones,
+              writes listings, marks them sold, and answers enquiries &mdash; in what language and
+              how quickly? A catalogue that goes stale is worse than no catalogue, and the 2017
+              content freeze on the current site is the evidence that this needs an owner rather
+              than good intentions.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="needsconf mt-8" data-reveal style="max-width:76ch">
+      <b>Working on this build</b>
+      <p>
+        Sources live in <code>src/</code>, shared chrome in <code>tools/partials/</code>, content in
+        <code>data/*.json</code>. Run <code>tools/build.ps1</code> to regenerate; output is written
+        to the repository root and committed so Vercel serves it directly. Detail pages for stones
+        and jewellery are generated from the JSON, so adding a stone is a data edit and a rebuild.
+      </p>
+      <p>
+        To preview locally, <code>tools/serve.ps1</code> starts a static server on port 8787.
+      </p>
+      <p>
+        The entire placeholder system lives in <code>assets/css/plates.css</code> and can be deleted
+        wholesale when real photography arrives. Nothing in <code>site.css</code> depends on it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--charcoal">
+  <div class="wrap wrap--narrow tc">
+    <p class="eyebrow eyebrow--dark">Next</p>
+    <h2 class="h2 mt-2">Review it as a buyer would</h2>
+    <p class="lede mt-4" style="margin-inline:auto">
+      The three pages worth the most attention are a gemstone detail page, the filtered catalogue,
+      and the sourcing position &mdash; in that order. They are where the commercial argument is
+      either made or lost.
+    </p>
+    <div class="row mt-6" style="justify-content:center">
+      <a class="btn btn--primary" href="gemstones/spg-r-0166-unheated-mogok-ruby-5-74ct.html">A gemstone page</a>
+      <a class="btn btn--secondary" href="gemstones/index.html">The catalogue</a>
+    </div>
+  </div>
+</section>

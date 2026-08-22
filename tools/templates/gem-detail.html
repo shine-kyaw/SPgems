@@ -1,0 +1,122 @@
+<!--meta
+title: {{TITLE}} — SP Gems
+desc: {{DESC}}
+nav: gemstones
+css: catalogue.css
+js: catalogue-none,gem.js
+viewer: yes
+-->
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="{{BASE}}index.html">Home</a><span class="sep">/</span>
+    <a href="{{BASE}}gemstones/index.html">Gemstones</a><span class="sep">/</span>
+    <a href="{{BASE}}gemstones/{{TYPE_SLUG}}.html">{{TYPE_LABEL}}</a><span class="sep">/</span>
+    <span>{{STONE_ID}}</span>
+  </nav>
+</div>
+
+<!-- §13.1 — desktop two-column split, 58/42, sticky right rail -->
+<div class="wrap section--short" data-detail>
+  <div class="gem">
+
+    <!-- ===== Media column (left, 58%) — scrolls naturally ============== -->
+    <div class="gem__media">
+      <!-- Hidden media set. gem.js reads these and clones them into the hero,
+           the mobile carousel and the fullscreen viewer. In production each
+           becomes a <picture> with AVIF/WebP srcset at 400/800/1200/2000px. -->
+      <div hidden>{{MEDIA_ITEMS}}</div>
+
+      <!-- Desktop hero. FR-GEM-050: this is the LCP element and is
+           priority-loaded and preloaded in production. -->
+      <div class="gem__hero" data-hero data-open-viewer="0" role="button" tabindex="0"
+           aria-label="Open full-screen viewer">
+      </div>
+      <p class="gem__zoomhint no-mobile" aria-hidden="true">
+        <svg width="13" height="13" viewBox="0 0 15 15" fill="none"><circle cx="6.2" cy="6.2" r="4.6" stroke="currentColor" stroke-width="1.2"/><path d="M4.2 6.2h4M6.2 4.2v4M9.8 9.8 14 14" stroke="currentColor" stroke-width="1.2"/></svg>
+        Click to enlarge
+      </p>
+
+      <div class="gem__thumbs" role="tablist" aria-label="Images">{{THUMBS}}</div>
+
+      <!-- FR-MOB-020 — swipeable carousel with dots and an image counter -->
+      <div class="gem__carousel">
+        <div class="gem__track" data-track>{{SLIDES}}</div>
+        <span class="gem__counter tnum" data-mcount>1 / {{MEDIA_COUNT}}</span>
+        <div class="gem__dots" data-dots aria-hidden="true">{{DOTS}}</div>
+      </div>
+    </div>
+
+    <!-- ===== Specification & action rail (right, 42%, sticky) ========== -->
+    <div class="gem__rail">
+      <p class="eyebrow gem__eyebrow">{{EYEBROW}}</p>
+      <h1 class="h2 gem__title">{{TITLE}}</h1>
+      <p class="gem__sub">{{SUBTITLE}}</p>
+      <p class="stone-id mt-2">{{STONE_ID}}</p>
+
+      <div class="gem__markers">{{MARKERS}}</div>
+
+      <!-- §13.2 item 3 — six to eight highest-value fields only -->
+      <table class="spec-table mt-4">
+        <caption class="visually-hidden">Key specifications</caption>
+        <tbody>{{KEY_SPECS}}</tbody>
+      </table>
+
+      <!-- §13.2 item 4 — price and availability per §12.5 -->
+      <div class="gem__price">
+        <p class="amount">{{PRICE}}</p>
+        {{PRICE_NOTE}}
+        <p class="avail {{AVAIL_CLASS}}"><i aria-hidden="true"></i>{{AVAIL_LABEL}}</p>
+      </div>
+
+      <!-- §13.2 item 5 / FR-CAT-020 — exactly one visually primary CTA -->
+      <div class="gem__cta" data-abar-after>
+        {{CTA}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{BLOCK_PROVENANCE}}
+{{BLOCK_COLOUR}}
+{{BLOCK_CUT}}
+
+<!-- §13.2 item 9 / FR-GEM-052 — treatment disclosure is rendered on every
+     page, visually distinct, regardless of status, including when unheated.
+     Making it prominent for treated stones is what makes it credible for the
+     unheated ones. -->
+<section class="section section--ivory-deep">
+  <div class="wrap wrap--text">
+    <div class="treat" data-reveal>
+      <p class="eyebrow eyebrow--gold">Treatment disclosure</p>
+      <div class="treat__h mt-2">
+        <span class="treat__status">{{TREAT_STATUS}}</span>
+      </div>
+      <div class="prose">
+        <p>{{TREAT_BODY}}</p>
+      </div>
+      <p class="treat__verify">{{TREAT_VERIFY}}
+        <a href="{{BASE}}journal/heated-vs-unheated-gemstones.html">Heated vs unheated: what gemstone treatment actually means &rarr;</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+{{BLOCK_CERT}}
+{{BLOCK_GALLERY}}
+
+<!-- §13.2 item 13 — a distinct, quieter second-chance CTA -->
+<section class="section section--charcoal">
+  <div class="wrap wrap--narrow tc">
+    <p class="eyebrow eyebrow--dark">Private consultation</p>
+    <h2 class="h2 mt-2">Would you like to see this stone in person, or by video call?</h2>
+    <p class="lede mt-3" style="margin-inline:auto">
+      A specialist can show you the stone on camera under different lighting, walk you
+      through the laboratory report, and answer questions before you commit to anything.
+    </p>
+    <div class="row mt-6" style="justify-content:center">
+      <a class="btn btn--primary" href="{{BASE}}consultation.html?gem={{STONE_ID}}">Arrange a consultation</a>
+    </div>
+  </div>
+</section>
+
+{{BLOCK_RELATED}}

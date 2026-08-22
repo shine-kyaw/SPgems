@@ -1,0 +1,73 @@
+<!--meta
+title: Jewellery — SP Gems
+desc: Fine jewellery made in Yangon around stones from our own catalogue. Rings, earrings, pendants and bangles, with the centre stone fully specified.
+nav: jewellery
+css: catalogue.css
+-->
+<div class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{BASE}}index.html">Home</a><span class="sep">/</span><span>Jewellery</span>
+    </nav>
+    <div class="phead__inner">
+      <p class="eyebrow eyebrow--gold">Fine jewellery</p>
+      <h1 class="h1 phead__title mt-2">Jewellery</h1>
+      <!-- §14.1 — jewellery is presented as the destination of the stone, not
+           as a parallel product line. -->
+      <p class="lede phead__lede">
+        Every piece here is built around a stone we can account for. Where the centre stone is
+        in our catalogue, the two records link to each other &mdash; so the ring and the
+        laboratory report describe the same object, and you can read the stone's full
+        specification before you look at the setting.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap section--short">
+  <div class="toolbar">
+    <p class="toolbar__count"><b>{{COUNT_JWL}}</b> pieces</p>
+    <div class="toolbar__right">
+      <span class="caption">Filtering by type, metal and collection is specified in §14.5 and is part of the production build.</span>
+    </div>
+  </div>
+  <div class="grid grid--3" data-reveal>
+    {{JWL_CARDS_ALL}}
+  </div>
+</div>
+
+<section class="section section--ivory-deep">
+  <div class="wrap wrap--text">
+    <div class="split split--top" data-reveal>
+      <div>
+        <p class="eyebrow eyebrow--gold">The Value</p>
+        <h2 class="h2 mt-2">A designer-led collection, not a catalogue of settings</h2>
+      </div>
+      <div class="prose">
+        <p>
+          The Value is our jewellery collection, headed by Aung Kyaw Zin, who trained as an
+          architect before he designed jewellery. The pieces are built around specific stones
+          rather than designed first and filled afterwards, which is the practical difference
+          between a house that mines and one that buys finished goods.
+        </p>
+        <p><a class="link" href="{{BASE}}jewellery/collections/the-value.html">Explore The Value <span class="arw">&rarr;</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--charcoal">
+  <div class="wrap wrap--narrow tc">
+    <p class="eyebrow eyebrow--dark">Commissions</p>
+    <h2 class="h2 mt-2">Or begin with the stone</h2>
+    <p class="lede mt-4" style="margin-inline:auto">
+      Choose a stone from the catalogue and we will design around it. Commissions start as a
+      conversation, not a specification handover &mdash; three short steps, all of which you
+      can skip.
+    </p>
+    <div class="row mt-6" style="justify-content:center">
+      <a class="btn btn--primary" href="{{BASE}}jewellery/bespoke.html">Start a commission</a>
+      <a class="btn btn--secondary" href="{{BASE}}gemstones/index.html">Browse gemstones</a>
+    </div>
+  </div>
+</section>

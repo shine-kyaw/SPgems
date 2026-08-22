@@ -1,0 +1,683 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search — SP Gems</title>
+<meta name="description" content="Search gemstones, jewellery, collections and articles. An exact stone reference or certificate number resolves straight to the record.">
+<meta name="robots" content="noindex, nofollow">
+<!-- DEMO: noindex is set site-wide on purpose. This build contains specimen
+     inventory data and placeholder imagery and must never be indexed. Remove
+     this tag, and add the §23 structured-data layer, at production launch. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SP Gems">
+<meta property="og:title" content="Search — SP Gems">
+<meta property="og:description" content="Search gemstones, jewellery, collections and articles. An exact stone reference or certificate number resolves straight to the record.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- §28.3 — open-source pairing: Cormorant Garamond (display) + Instrument Sans
+     (body/spec). FR-PERF-033 requires these to be self-hosted, subset and
+     preloaded in production; the CDN link is a demo convenience only. -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/plates.css">
+<link rel="stylesheet" href="assets/css/catalogue.css">
+
+<!-- Marks scripting as available so scroll-reveal can start from opacity:0.
+     Without this class the content is simply visible — FR-HOME-013. -->
+<script>document.documentElement.className+=" js";</script>
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- DEMO NOTICE — remove with plates.css at hand-off -->
+<div class="demobar">
+  <div class="wrap demobar__inner">
+    <b>Demo build</b>
+    <p>Specimen inventory, placeholder photography, no live forms. <a href="demo-notes.html">What is real and what is not &rarr;</a></p>
+    <button class="demobar__x" type="button" aria-label="Dismiss demo notice">&times;</button>
+  </div>
+</div>
+
+<header class="hdr">
+  <div class="wrap hdr__bar">
+    <a class="hdr__brand" href="index.html">
+      <b>SP GEMS</b>
+      <small>Mogok &middot; Since 1985</small>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <!-- §9.2 — GEMSTONES before JEWELLERY: loose stones are the
+           differentiated business. No "Shop", no cart icon (§10). -->
+      <div class="nav__item">
+        <a class="nav__link" href="gemstones/index.html" >Gemstones <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1.5 4.5 5 8 1.5" stroke="currentColor" stroke-width="1.1"/></svg></a>
+        <div class="mega">
+          <div class="mega__col">
+            <h3>By type</h3>
+            <ul>
+              <li><a href="gemstones/ruby.html">Ruby</a></li>
+              <li><a href="gemstones/sapphire.html">Sapphire</a></li>
+              <li><a href="gemstones/spinel.html">Spinel</a></li>
+              <li><a href="gemstones/other.html">Other Gemstones</a></li>
+            </ul>
+          </div>
+          <div class="mega__col">
+            <h3>By selection</h3>
+            <ul>
+              <li><a href="gemstones/index.html">All Available</a></li>
+              <li><a href="gemstones/exceptional.html">Exceptional Gems</a></li>
+              <li><a href="gemstones/index.html?sort=newest">Recently Added</a></li>
+              <li><a href="gemstones/archive.html">Archive</a></li>
+            </ul>
+          </div>
+          <a class="mega__feat" href="gemstones/spg-r-0166-unheated-mogok-ruby-5-74ct.html">
+            <div class="card__media">
+              <div class="plate">
+                <span class="plate__wm">SP GEMS</span>
+                <span class="plate__id">SPG-R-0166</span>
+                <span class="plate__shot">Front, neutral grey ground</span>
+                <span class="plate__pending">Photography pending</span>
+              </div>
+            </div>
+            <p class="eyebrow mt-2">Featured</p>
+            <p class="small mt-1" style="color:var(--ink)">Unheated Mogok Ruby, 5.74&nbsp;ct</p>
+            <p class="caption">Mogok, Myanmar &middot; Price on Request</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a class="nav__link" href="jewellery/index.html" >Jewellery <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1.5 4.5 5 8 1.5" stroke="currentColor" stroke-width="1.1"/></svg></a>
+        <div class="mega">
+          <div class="mega__col">
+            <h3>By type</h3>
+            <ul>
+              <li><a href="jewellery/index.html?type=Ring">Rings</a></li>
+              <li><a href="jewellery/index.html?type=Necklace">Necklaces &amp; Pendants</a></li>
+              <li><a href="jewellery/index.html?type=Earrings">Earrings</a></li>
+              <li><a href="jewellery/index.html?type=Bracelet">Bracelets &amp; Bangles</a></li>
+            </ul>
+          </div>
+          <div class="mega__col">
+            <h3>Collections</h3>
+            <ul>
+              <li><a href="jewellery/collections/the-value.html">The Value</a></li>
+            </ul>
+            <h3 class="mt-4">Services</h3>
+            <ul>
+              <li><a href="jewellery/bespoke.html">Bespoke Commissions</a></li>
+            </ul>
+          </div>
+          <a class="mega__feat" href="jewellery/collections/the-value.html">
+            <div class="card__media">
+              <div class="plate">
+                <span class="plate__wm">SP GEMS</span>
+                <span class="plate__id">The Value</span>
+                <span class="plate__shot">Collection hero</span>
+                <span class="plate__pending">Photography pending</span>
+              </div>
+            </div>
+            <p class="eyebrow mt-2">Collection</p>
+            <p class="small mt-1" style="color:var(--ink)">The Value</p>
+            <p class="caption">Designer-led, headed by Aung Kyaw Zin</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- §9.2 — "MOGOK" rather than "Our Story" or "Heritage": the single
+           most valuable word SP Gems owns, and a strong SEO anchor. -->
+      <div class="nav__item">
+        <a class="nav__link" href="mogok/index.html" >Mogok <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1.5 4.5 5 8 1.5" stroke="currentColor" stroke-width="1.1"/></svg></a>
+        <div class="mega mega--sm">
+          <div class="mega__col">
+            <ul>
+              <li><a href="mogok/our-story.html">Our Story</a></li>
+              <li><a href="mogok/the-mines.html">The Mines</a></li>
+              <li><a href="mogok/craftsmanship.html">Cutting &amp; Craftsmanship</a></li>
+              <li><a href="mogok/responsible-sourcing.html">Responsible Sourcing</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- §9.2 — JOURNAL absorbs education, stories and news: one content
+           system, three types, one place to look. -->
+      <div class="nav__item">
+        <a class="nav__link" href="journal/index.html" >Journal <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1.5 4.5 5 8 1.5" stroke="currentColor" stroke-width="1.1"/></svg></a>
+        <div class="mega mega--sm">
+          <div class="mega__col">
+            <ul>
+              <li><a href="journal/learn.html">Learn</a></li>
+              <li><a href="journal/index.html?cat=stories">Stories</a></li>
+              <li><a href="journal/index.html?cat=news">News &amp; Events</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a class="nav__link" href="about/index.html" >About <svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1.5 4.5 5 8 1.5" stroke="currentColor" stroke-width="1.1"/></svg></a>
+        <div class="mega mega--sm">
+          <div class="mega__col">
+            <ul>
+              <li><a href="about/index.html">The House</a></li>
+              <li><a href="about/team.html">The Family &amp; Team</a></li>
+              <li><a href="about/how-buying-works.html">How Buying Works</a></li>
+              <li><a href="about/international.html">International Purchasing</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav__item">
+        <a class="nav__link" href="contact.html" >Contact</a>
+      </div>
+    </nav>
+
+    <div class="hdr__actions">
+      <a class="icon-btn" href="search.html" aria-label="Search the site">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.4" stroke="currentColor" stroke-width="1.2"/><path d="m11.2 11.2 4 4" stroke="currentColor" stroke-width="1.2"/></svg>
+      </a>
+      <!-- §9.2 — "Enquire" is a persistent, visually distinct action in every viewport -->
+      <a class="btn btn--primary btn--sm" href="contact.html" data-enquire data-item-kind="general">Enquire</a>
+      <button class="icon-btn hdr__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true"><path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" stroke-width="1.3"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- FR-MOB-002 — full-screen overlay, 56px rows, accordion sub-navigation,
+     persistent Enquire action pinned at the bottom. -->
+<div class="mnav" id="mnav">
+  <div class="mnav__top">
+    <a class="hdr__brand" href="index.html"><b>SP GEMS</b></a>
+    <button class="icon-btn mnav__close" type="button" aria-label="Close menu">
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="m1 1 15 15M16 1 1 16" stroke="currentColor" stroke-width="1.3"/></svg>
+    </button>
+  </div>
+  <div class="mnav__body">
+    <button class="mnav__row" type="button" aria-expanded="false" aria-controls="mn-gem">Gemstones <svg class="chev" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1.5 5.5 6 10 1.5" stroke="currentColor" stroke-width="1.2"/></svg></button>
+    <div class="mnav__sub" id="mn-gem">
+      <a href="gemstones/index.html">All Available</a>
+      <a href="gemstones/ruby.html">Ruby</a>
+      <a href="gemstones/sapphire.html">Sapphire</a>
+      <a href="gemstones/spinel.html">Spinel</a>
+      <a href="gemstones/other.html">Other Gemstones</a>
+      <a href="gemstones/exceptional.html">Exceptional Gems</a>
+      <a href="gemstones/archive.html">Archive</a>
+    </div>
+
+    <button class="mnav__row" type="button" aria-expanded="false" aria-controls="mn-jwl">Jewellery <svg class="chev" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1.5 5.5 6 10 1.5" stroke="currentColor" stroke-width="1.2"/></svg></button>
+    <div class="mnav__sub" id="mn-jwl">
+      <a href="jewellery/index.html">All Pieces</a>
+      <a href="jewellery/collections/the-value.html">The Value</a>
+      <a href="jewellery/bespoke.html">Bespoke Commissions</a>
+    </div>
+
+    <button class="mnav__row" type="button" aria-expanded="false" aria-controls="mn-mog">Mogok <svg class="chev" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1.5 5.5 6 10 1.5" stroke="currentColor" stroke-width="1.2"/></svg></button>
+    <div class="mnav__sub" id="mn-mog">
+      <a href="mogok/index.html">Mogok</a>
+      <a href="mogok/our-story.html">Our Story</a>
+      <a href="mogok/the-mines.html">The Mines</a>
+      <a href="mogok/craftsmanship.html">Cutting &amp; Craftsmanship</a>
+      <a href="mogok/responsible-sourcing.html">Responsible Sourcing</a>
+    </div>
+
+    <button class="mnav__row" type="button" aria-expanded="false" aria-controls="mn-jrn">Journal <svg class="chev" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1.5 5.5 6 10 1.5" stroke="currentColor" stroke-width="1.2"/></svg></button>
+    <div class="mnav__sub" id="mn-jrn">
+      <a href="journal/index.html">All</a>
+      <a href="journal/learn.html">Learn</a>
+    </div>
+
+    <button class="mnav__row" type="button" aria-expanded="false" aria-controls="mn-abt">About <svg class="chev" width="11" height="7" viewBox="0 0 11 7" fill="none" aria-hidden="true"><path d="M1 1.5 5.5 6 10 1.5" stroke="currentColor" stroke-width="1.2"/></svg></button>
+    <div class="mnav__sub" id="mn-abt">
+      <a href="about/index.html">The House</a>
+      <a href="about/team.html">The Family &amp; Team</a>
+      <a href="about/how-buying-works.html">How Buying Works</a>
+      <a href="about/international.html">International Purchasing</a>
+    </div>
+
+    <a class="mnav__row" href="contact.html">Contact</a>
+    <a class="mnav__row" href="consultation.html">Consultation</a>
+    <a class="mnav__row" href="search.html">Search</a>
+    <a class="mnav__row" href="trade.html" style="font-size:17px;font-family:var(--font-body);color:var(--ink-secondary)">Trade &amp; Wholesale</a>
+  </div>
+  <div class="mnav__foot">
+    <a class="btn btn--primary btn--block" href="contact.html">Enquire</a>
+  </div>
+</div>
+
+<main id="main">
+<div class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span><span>Search</span>
+    </nav>
+    <div class="phead__inner">
+      <p class="eyebrow eyebrow--gold">Search</p>
+      <h1 class="h1 phead__title mt-2">Search</h1>
+      <p class="lede phead__lede">
+        Stones, jewellery, articles and pages. Typing a stone reference such as
+        <span class="stone-id" style="color:var(--ink)">SPG-R-0142</span> or a certificate number
+        takes you straight to the record.
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="section--short">
+  <div class="wrap wrap--narrow">
+    <div class="field">
+      <label class="field__label" for="q">What are you looking for?</label>
+      <input class="input" id="q" type="search" autocomplete="off" autofocus
+             placeholder="unheated mogok ruby, spinel, pigeon&rsquo;s blood, SPG-R-0142&hellip;"
+             style="font-size:20px;padding:12px 0">
+      <p class="field__hint">
+        Typo-tolerant: &ldquo;mogock&rdquo;, &ldquo;spinnel&rdquo; and
+        &ldquo;padparadsha&rdquo; all resolve.
+      </p>
+    </div>
+
+    <p class="small mt-4" aria-live="polite" id="q-count" style="color:var(--ink-secondary)"></p>
+    <div id="q-results" class="mt-4"></div>
+
+    <div id="q-empty" class="zero mt-6" hidden>
+      <p class="eyebrow eyebrow--gold">Nothing found</p>
+      <h2 class="h3 mt-2">We have nothing matching that.</h2>
+      <p class="small mt-2" style="color:var(--ink-secondary);max-width:50ch;margin-inline:auto">
+        Our catalogue is what we hold today. If you are looking for something specific, telling
+        us is usually faster than searching for it.
+      </p>
+      <div class="zero__acts">
+        <a class="btn btn--primary btn--sm" href="contact.html" data-enquire
+           data-item-kind="sourcing" data-item-id="SOURCING"
+           data-item-title="Sourcing request" data-item-meta="From a search with no results">
+          Tell us what you are looking for
+        </a>
+        <a class="btn btn--secondary btn--sm" href="gemstones/index.html">Browse the catalogue</a>
+      </div>
+    </div>
+
+    <div id="q-prompt" class="mt-6">
+      <p class="eyebrow mb-3">Try</p>
+      <div class="chips">
+        <button class="btn btn--secondary btn--sm" type="button" data-q="unheated ruby">Unheated ruby</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-q="mogok spinel">Mogok spinel</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-q="pigeon">Pigeon&rsquo;s blood</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-q="matched pair">Matched pairs</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-q="SPG-R-0142">SPG-R-0142</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-q="star sapphire">Star sapphire</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script id="search-index" type="application/json">[{"g":"gemstone","t":"Unheated Mogok Ruby, 3.08 ct","s":"SPG-R-0142","u":"gemstones/spg-r-0142-unheated-mogok-ruby-3-08ct.html","m":"3.08 ct · Cushion · Mogok","k":"spg-r-0142 unheated mogok ruby, 3.08 ct ruby  mogok vivid red, slight purplish modifier pigeon\u0027s blood (grs) cushion unheated grs grs20xx-xxxxxx minor inclusions typical of mogok material"},{"g":"gemstone","t":"Mogok Ruby, 2.14 ct","s":"SPG-R-0128","u":"gemstones/spg-r-0128-mogok-ruby-2-14ct.html","m":"2.14 ct · Oval · Mogok","k":"spg-r-0128 mogok ruby, 2.14 ct ruby  mogok strong red  oval heated aigs aigs-xxxxxxx eye-clean"},{"g":"gemstone","t":"Unheated Mogok Ruby, 1.46 ct","s":"SPG-R-0151","u":"gemstones/spg-r-0151-unheated-mogok-ruby-1-46ct.html","m":"1.46 ct · Cushion · Mogok","k":"spg-r-0151 unheated mogok ruby, 1.46 ct ruby  mogok vivid red  cushion unheated grs grs20xx-xxxxxx minor inclusions"},{"g":"gemstone","t":"Matched Pair, Mogok Ruby, 2.88 ct total","s":"SPG-R-0117","u":"gemstones/spg-r-0117-mogok-ruby-pair-2-88ct-total.html","m":"2.88 ct · Oval · Mogok","k":"spg-r-0117 matched pair, mogok ruby, 2.88 ct total ruby  mogok strong red  oval heated   eye-clean, closely matched"},{"g":"gemstone","t":"Unheated Burmese Sapphire, 5.21 ct","s":"SPG-S-0087","u":"gemstones/spg-s-0087-royal-blue-sapphire-5-21ct.html","m":"5.21 ct · Cushion · Mogok","k":"spg-s-0087 unheated burmese sapphire, 5.21 ct sapphire  mogok royal blue, medium-dark tone royal blue (grs) cushion unheated grs grs20xx-xxxxxx minor inclusions, eye-clean face-up"},{"g":"gemstone","t":"Burmese Sapphire, 2.67 ct","s":"SPG-S-0094","u":"gemstones/spg-s-0094-burmese-sapphire-2-67ct.html","m":"2.67 ct · Oval · Mogok","k":"spg-s-0094 burmese sapphire, 2.67 ct sapphire  mogok medium blue, slightly violetish  oval heated aigs aigs-xxxxxxx eye-clean"},{"g":"gemstone","t":"Star Sapphire, 8.94 ct","s":"SPG-S-0101","u":"gemstones/spg-s-0101-star-sapphire-8-94ct.html","m":"8.94 ct · Cabochon · Mogok","k":"spg-s-0101 star sapphire, 8.94 ct sapphire star sapphire mogok greyish blue  cabochon unheated   translucent, as required for the phenomenon"},{"g":"gemstone","t":"Mogok Red Spinel, 2.44 ct","s":"SPG-SP-0203","u":"gemstones/spg-sp-0203-mogok-red-spinel-2-44ct.html","m":"2.44 ct · Cushion · Mogok","k":"spg-sp-0203 mogok red spinel, 2.44 ct spinel  mogok vivid red, slight orange modifier  cushion unheated grs grs20xx-xxxxxx eye-clean"},{"g":"gemstone","t":"Mogok Pink Spinel, 3.71 ct","s":"SPG-SP-0188","u":"gemstones/spg-sp-0188-mogok-pink-spinel-3-71ct.html","m":"3.71 ct · Oval · Mogok","k":"spg-sp-0188 mogok pink spinel, 3.71 ct spinel  mogok vivid pink  oval unheated   eye-clean"},{"g":"gemstone","t":"Namyarseik Grey Spinel, 4.16 ct","s":"SPG-SP-0211","u":"gemstones/spg-sp-0211-namyarseik-grey-spinel-4-16ct.html","m":"4.16 ct · Cushion · Namyarseik (Kachin)","k":"spg-sp-0211 namyarseik grey spinel, 4.16 ct spinel  namyarseik (kachin) cool grey with a faint violet cast  cushion unheated   eye-clean"},{"g":"gemstone","t":"Mogok Red Spinel, 1.22 ct","s":"SPG-SP-0196","u":"gemstones/spg-sp-0196-mogok-red-spinel-1-22ct.html","m":"1.22 ct · Oval · Mogok","k":"spg-sp-0196 mogok red spinel, 1.22 ct spinel  mogok strong red  oval unheated   eye-clean"},{"g":"gemstone","t":"Mogok Peridot, 6.38 ct","s":"SPG-O-0044","u":"gemstones/spg-o-0044-mogok-peridot-6-38ct.html","m":"6.38 ct · Cushion · Mogok","k":"spg-o-0044 mogok peridot, 6.38 ct other peridot mogok vivid yellowish green  cushion unheated   eye-clean"},{"g":"gemstone","t":"Mogok Moonstone, 11.04 ct","s":"SPG-O-0051","u":"gemstones/spg-o-0051-mogok-moonstone-11-04ct.html","m":"11.04 ct · Cabochon · Mogok","k":"spg-o-0051 mogok moonstone, 11.04 ct other moonstone mogok colourless body with blue adularescence  cabochon unheated   semi-transparent"},{"g":"gemstone","t":"Mogok Tourmaline, 4.92 ct","s":"SPG-O-0038","u":"gemstones/spg-o-0038-mogok-tourmaline-4-92ct.html","m":"4.92 ct · Emerald · Mogok","k":"spg-o-0038 mogok tourmaline, 4.92 ct other tourmaline mogok deep bluish green  emerald unheated   eye-clean"},{"g":"gemstone","t":"Unheated Mogok Ruby, 5.74 ct","s":"SPG-R-0166","u":"gemstones/spg-r-0166-unheated-mogok-ruby-5-74ct.html","m":"5.74 ct · Cushion · Mogok","k":"spg-r-0166 unheated mogok ruby, 5.74 ct ruby  mogok vivid red pigeon\u0027s blood (grs) cushion unheated grs grs20xx-xxxxxx minor inclusions typical of mogok material"},{"g":"gemstone","t":"Burmese Sapphire, 3.33 ct","s":"SPG-S-0079","u":"gemstones/spg-s-0079-burmese-sapphire-3-33ct.html","m":"3.33 ct · Pear · Mogok","k":"spg-s-0079 burmese sapphire, 3.33 ct sapphire  mogok medium-dark blue  pear heated aigs aigs-xxxxxxx eye-clean"},{"g":"gemstone","t":"Unheated Mogok Ruby, 2.61 ct","s":"SPG-R-0099","u":"gemstones/spg-r-0099-unheated-mogok-ruby-2-61ct.html","m":"2.61 ct · Oval · Mogok","k":"spg-r-0099 unheated mogok ruby, 2.61 ct ruby  mogok vivid red  oval unheated grs grs20xx-xxxxxx minor inclusions"},{"g":"gemstone","t":"Mogok Red Spinel, 6.08 ct","s":"SPG-SP-0174","u":"gemstones/spg-sp-0174-mogok-red-spinel-6-08ct.html","m":"6.08 ct · Cushion · Mogok","k":"spg-sp-0174 mogok red spinel, 6.08 ct spinel  mogok vivid red  cushion unheated grs grs20xx-xxxxxx eye-clean"},{"g":"gemstone","t":"Mogok Ruby Cabochon, 4.48 ct","s":"SPG-R-0134","u":"gemstones/spg-r-0134-mogok-ruby-cabochon-4-48ct.html","m":"4.48 ct · Cabochon · Mogok","k":"spg-r-0134 mogok ruby cabochon, 4.48 ct ruby  mogok strong red  cabochon heated   translucent"},{"g":"gemstone","t":"Matched Pair, Burmese Sapphire, 4.02 ct total","s":"SPG-S-0112","u":"gemstones/spg-s-0112-burmese-sapphire-pair-4-02ct-total.html","m":"4.02 ct · Oval · Mogok","k":"spg-s-0112 matched pair, burmese sapphire, 4.02 ct total sapphire  mogok medium-dark blue  oval heated aigs aigs-xxxxxxx eye-clean, closely matched"},{"g":"jewellery","t":"Ruby Solitaire Ring","s":"SPG-J-0031","u":"jewellery/spg-j-0031-unheated-mogok-ruby-ring.html","m":"Ring · 18k Yellow Gold","k":"spg-j-0031 ruby solitaire ring ring 18k yellow gold the value aung kyaw zin"},{"g":"jewellery","t":"Ruby Drop Earrings","s":"SPG-J-0028","u":"jewellery/spg-j-0028-mogok-ruby-drop-earrings.html","m":"Earrings · 18k Yellow Gold","k":"spg-j-0028 ruby drop earrings earrings 18k yellow gold the value aung kyaw zin"},{"g":"jewellery","t":"Sapphire Pendant","s":"SPG-J-0034","u":"jewellery/spg-j-0034-burmese-sapphire-pendant.html","m":"Pendant · 18k White Gold","k":"spg-j-0034 sapphire pendant pendant 18k white gold the value aung kyaw zin"},{"g":"jewellery","t":"Spinel Cocktail Ring","s":"SPG-J-0022","u":"jewellery/spg-j-0022-spinel-cocktail-ring.html","m":"Ring · 18k Rose Gold","k":"spg-j-0022 spinel cocktail ring ring 18k rose gold the value aung kyaw zin"},{"g":"jewellery","t":"Peridot Bangle","s":"SPG-J-0019","u":"jewellery/spg-j-0019-peridot-bangle.html","m":"Bangle · 18k Yellow Gold","k":"spg-j-0019 peridot bangle bangle 18k yellow gold the value aung kyaw zin"},{"g":"jewellery","t":"Moonstone Pendant","s":"SPG-J-0037","u":"jewellery/spg-j-0037-moonstone-pendant.html","m":"Pendant · 18k White Gold","k":"spg-j-0037 moonstone pendant pendant 18k white gold the value aung kyaw zin"},{"g":"article","t":"What is a Mogok ruby, and why does origin matter?","s":"","u":"journal/what-is-a-mogok-ruby.html","m":"Mogok is a valley, a geology and a price. Here is what separates it from the broader Burmese designation, and how a buyer can tell.","k":"what is a mogok ruby, and why does origin matter? mogok is a valley, a geology and a price. here is what separates it from the broader burmese designation, and how a buyer can tell. learn"},{"g":"article","t":"Heated vs unheated: what gemstone treatment actually means","s":"","u":"journal/heated-vs-unheated-gemstones.html","m":"The most common question we are asked, answered without a sales agenda: heating is legitimate, it must be disclosed, and it is not the same as being inferior.","k":"heated vs unheated: what gemstone treatment actually means the most common question we are asked, answered without a sales agenda: heating is legitimate, it must be disclosed, and it is not the same as being inferior. learn"},{"g":"article","t":"\"Pigeon\u0027s blood\": what the term means, and who can use it","s":"","u":"journal/pigeons-blood-what-the-term-means.html","m":"One of the most misused phrases in the trade. It is a laboratory grade, not an adjective — and the difference is worth money.","k":"\"pigeon\u0027s blood\": what the term means, and who can use it one of the most misused phrases in the trade. it is a laboratory grade, not an adjective — and the difference is worth money. learn"},{"g":"article","t":"How to read a gemstone laboratory report","s":"","u":"journal/how-to-read-a-gemstone-laboratory-report.html","m":"A field guide to the document that decides the price: what each section is actually asserting, and what it deliberately is not.","k":"how to read a gemstone laboratory report a field guide to the document that decides the price: what each section is actually asserting, and what it deliberately is not. learn"},{"g":"article","t":"Carat weight vs visual size","s":"","u":"journal/carat-weight-vs-visual-size.html","m":"Why two stones of identical carat weight can look a full size apart, and why the heavier one is not always the better buy.","k":"carat weight vs visual size why two stones of identical carat weight can look a full size apart, and why the heavier one is not always the better buy. learn"},{"g":"page","t":"How buying works","s":"","u":"about/how-buying-works.html","m":"The nine steps from enquiry to delivery","k":"how buying works the nine steps from enquiry to delivery"},{"g":"page","t":"International purchasing \u0026 compliance","s":"","u":"about/international.html","m":"The sanctions position and what we document","k":"international purchasing \u0026 compliance the sanctions position and what we document"},{"g":"page","t":"Responsible sourcing","s":"","u":"mogok/responsible-sourcing.html","m":"What we document and what we decline to claim","k":"responsible sourcing what we document and what we decline to claim"},{"g":"page","t":"The mines","s":"","u":"mogok/the-mines.html","m":"Mogok geology and how material reaches us","k":"the mines mogok geology and how material reaches us"},{"g":"page","t":"Cutting \u0026 craftsmanship","s":"","u":"mogok/craftsmanship.html","m":"Sorting, orienting, cutting, setting","k":"cutting \u0026 craftsmanship sorting, orienting, cutting, setting"},{"g":"page","t":"The Value","s":"","u":"jewellery/collections/the-value.html","m":"Our designer-led jewellery collection","k":"the value our designer-led jewellery collection"},{"g":"page","t":"Bespoke commissions","s":"","u":"jewellery/bespoke.html","m":"Commission a piece around a stone","k":"bespoke commissions commission a piece around a stone"},{"g":"page","t":"Trade \u0026 wholesale","s":"","u":"trade.html","m":"For designers, brands, dealers and bench jewellers","k":"trade \u0026 wholesale for designers, brands, dealers and bench jewellers"},{"g":"page","t":"Arrange a consultation","s":"","u":"consultation.html","m":"Video, phone, or in person in Yangon","k":"arrange a consultation video, phone, or in person in yangon"}]</script>
+<script>
+(function () {
+  'use strict';
+  var DATA = JSON.parse(document.getElementById('search-index').textContent);
+  var input = document.getElementById('q');
+  var out   = document.getElementById('q-results');
+  var count = document.getElementById('q-count');
+  var empty = document.getElementById('q-empty');
+  var prompt = document.getElementById('q-prompt');
+
+  var GROUPS = [
+    { key: 'gemstone',  label: 'Gemstones' },
+    { key: 'jewellery', label: 'Jewellery' },
+    { key: 'article',   label: 'Journal' },
+    { key: 'page',      label: 'Pages' }
+  ];
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
+    });
+  }
+
+  /* FR-SRCH-022 — typo tolerance is a requirement, not a nicety.
+     Levenshtein distance with an early bail-out, applied per token. */
+  function lev(a, b) {
+    if (a === b) return 0;
+    if (Math.abs(a.length - b.length) > 2) return 9;
+    var prev = [], cur = [], i, j;
+    for (j = 0; j <= b.length; j++) prev[j] = j;
+    for (i = 1; i <= a.length; i++) {
+      cur[0] = i;
+      for (j = 1; j <= b.length; j++) {
+        cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1,
+                          prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      }
+      prev = cur.slice();
+    }
+    return prev[b.length];
+  }
+
+  function score(row, tokens) {
+    var total = 0;
+    for (var i = 0; i < tokens.length; i++) {
+      var t = tokens[i];
+      if (t.length < 2) continue;
+      var best = 0;
+      if (row.k.indexOf(t) >= 0) {
+        best = 10;
+      } else if (t.length >= 4) {
+        // fuzzy match against each indexed word
+        var words = row.k.split(/[^a-z0-9]+/);
+        for (var w = 0; w < words.length; w++) {
+          if (words[w].length < 3) continue;
+          var d = lev(t, words[w]);
+          if (d <= (t.length >= 6 ? 2 : 1)) { best = Math.max(best, 6 - d); }
+        }
+      }
+      if (!best) return 0;          // every token must match something
+      total += best;
+    }
+    return total;
+  }
+
+  function run(q) {
+    q = (q || '').trim();
+    if (!q) {
+      out.innerHTML = ''; count.textContent = '';
+      empty.hidden = true; prompt.hidden = false;
+      return;
+    }
+    prompt.hidden = true;
+
+    /* FR-SRCH-021 — an exact stone ID or certificate number goes straight
+       to the record. Sales staff use this on calls constantly. */
+    var exact = DATA.filter(function (r) {
+      return r.s && r.s.toLowerCase() === q.toLowerCase();
+    });
+    if (exact.length === 1) { window.location.href = exact[0].u; return; }
+
+    var tokens = q.toLowerCase().split(/\s+/);
+    var hits = DATA.map(function (r) { return { r: r, n: score(r, tokens) }; })
+                   .filter(function (x) { return x.n > 0; })
+                   .sort(function (a, b) { return b.n - a.n; });
+
+    count.innerHTML = hits.length
+      ? '<b>' + hits.length + '</b> result' + (hits.length === 1 ? '' : 's') + ' for &ldquo;' + esc(q) + '&rdquo;'
+      : '';
+    empty.hidden = hits.length > 0;
+
+    var html = '';
+    GROUPS.forEach(function (grp) {
+      var rows = hits.filter(function (x) { return x.r.g === grp.key; });
+      if (!rows.length) return;
+      html += '<div class="mt-6"><p class="eyebrow eyebrow--gold mb-2">' + grp.label +
+              ' <span style="color:var(--ink-tertiary)">(' + rows.length + ')</span></p><div>';
+      rows.forEach(function (x) {
+        html += '<a href="' + x.r.u + '" style="display:block;text-decoration:none;color:inherit;' +
+                'padding:14px 0;border-bottom:1px solid var(--rule)">' +
+                '<span style="font-family:var(--font-display);font-size:20px;line-height:1.25">' +
+                esc(x.r.t) + '</span>' +
+                (x.r.s ? '<span class="stone-id" style="margin-left:10px">' + esc(x.r.s) + '</span>' : '') +
+                '<span class="caption" style="display:block;margin-top:4px">' + esc(x.r.m) + '</span>' +
+                '</a>';
+      });
+      html += '</div></div>';
+    });
+    out.innerHTML = html;
+  }
+
+  var timer;
+  input.addEventListener('input', function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      run(input.value);
+      var u = new URL(window.location);
+      if (input.value) { u.searchParams.set('q', input.value); }
+      else { u.searchParams.delete('q'); }
+      history.replaceState(null, '', u);
+    }, 140);
+  });
+
+  document.querySelectorAll('[data-q]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      input.value = b.getAttribute('data-q');
+      input.focus();
+      run(input.value);
+    });
+  });
+
+  var initial = new URLSearchParams(location.search).get('q');
+  if (initial) { input.value = initial; run(initial); }
+})();
+</script>
+
+</main>
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__cols">
+      <div class="ftr__brand">
+        <b>SP GEMS</b>
+        <p class="caption mt-2" style="color:#8E8880;max-width:30ch">
+          Mogok-rooted gemstone mining, cutting and fine jewellery. Family gem trading
+          since 1985; company established 2007.
+        </p>
+        <!-- §18.2 — verifiable company identity is required trust infrastructure -->
+        <p class="caption mt-3" style="color:#6E6862;max-width:32ch">
+          Registered name, company number and jurisdiction to be published here.
+          <a href="demo-notes.html">Awaiting SP Gems</a>.
+        </p>
+      </div>
+
+      <div>
+        <h3>Gemstones</h3>
+        <ul>
+          <li><a href="gemstones/index.html">All Available</a></li>
+          <li><a href="gemstones/ruby.html">Ruby</a></li>
+          <li><a href="gemstones/sapphire.html">Sapphire</a></li>
+          <li><a href="gemstones/spinel.html">Spinel</a></li>
+          <li><a href="gemstones/other.html">Other Gemstones</a></li>
+          <li><a href="gemstones/exceptional.html">Exceptional Gems</a></li>
+          <li><a href="gemstones/archive.html">Archive</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Jewellery</h3>
+        <ul>
+          <li><a href="jewellery/index.html">All Pieces</a></li>
+          <li><a href="jewellery/collections/the-value.html">The Value</a></li>
+          <li><a href="jewellery/bespoke.html">Bespoke Commissions</a></li>
+        </ul>
+        <h3 class="mt-4">Trade</h3>
+        <ul>
+          <li><a href="trade.html">Trade &amp; Wholesale</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>About</h3>
+        <ul>
+          <li><a href="about/index.html">The House</a></li>
+          <li><a href="about/team.html">The Family &amp; Team</a></li>
+          <li><a href="about/how-buying-works.html">How Buying Works</a></li>
+          <li><a href="about/international.html">International Purchasing</a></li>
+          <li><a href="mogok/index.html">Mogok</a></li>
+          <li><a href="journal/index.html">Journal</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li style="margin-bottom:14px">
+            No. 30A, Pyay Road (7 Mile)<br>
+            Mayangone Township<br>
+            Yangon, Myanmar
+          </li>
+          <li><a href="tel:+9516603970">+95 1 660 397</a></li>
+          <li><a href="tel:+9516660520">+95 1 666 052</a></li>
+          <li style="margin-bottom:14px"><a href="mailto:enquiries@spgems-myanmar.com">enquiries@spgems-myanmar.com</a></li>
+          <li><a href="consultation.html">Arrange a consultation</a></li>
+          <li><a href="contact.html">Contact &amp; enquiries</a></li>
+        </ul>
+
+        <!-- §29 s.12 — newsletter: a single inline field, never a modal (§28.7) -->
+        <h3 class="mt-4">New arrivals</h3>
+        <form class="ftr__news" data-newsletter novalidate>
+          <label class="visually-hidden" for="nl-email">Email address</label>
+          <input id="nl-email" type="email" name="email" placeholder="Email address" required autocomplete="email">
+          <button type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="ftr__legal">
+      <ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="about/international.html">International purchasing &amp; compliance</a></li>
+        <li><a href="demo-notes.html">Demo notes</a></li>
+      </ul>
+      <div class="row row--tight">
+        <!-- F16 — i18n framework in place, English at launch; Chinese is Phase 2 (§22) -->
+        <span class="caption" style="color:#6E6862">EN &middot; 中文 and ဗမာ deferred to Phase 2</span>
+        <span aria-hidden="true" style="color:#4A4642">|</span>
+        <span>&copy; <span data-year>2026</span> SP Gems</span>
+      </div>
+    </div>
+
+    <!-- §4.4 D1 — the live site currently ships social links pointing at the
+         literal string http://url. Rather than invent replacements, this demo
+         states the gap. -->
+    <p class="caption mt-3" style="color:#5E5954">
+      Social links intentionally omitted: the current site's Facebook, Instagram and
+      Twitter links point at a placeholder URL. Real handles required before launch.
+    </p>
+  </div>
+</footer>
+
+
+<!-- Contextual enquiry modal — §21, FR-GEM-051.
+     Opened by any [data-enquire] trigger, pre-populated with the item's ID,
+     title and URL so the lead arrives with its context attached. -->
+<div class="modal" id="enquiry-modal" role="dialog" aria-modal="true" aria-labelledby="enquiry-modal-title">
+  <div class="modal__scrim"></div>
+  <div class="modal__panel">
+    <div class="modal__head">
+      <div>
+        <p class="eyebrow">Enquiry</p>
+        <h2 class="h3 mt-1" id="enquiry-modal-title" data-modal-title>Make an enquiry</h2>
+      </div>
+      <button class="icon-btn modal__close" type="button" aria-label="Close">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="m1 1 15 15M16 1 1 16" stroke="currentColor" stroke-width="1.3"/></svg>
+      </button>
+    </div>
+
+    <div class="modal__body">
+      <!-- Item context strip — carries the stone reference into the lead record -->
+      <div class="ctx" data-ctx hidden>
+        <div class="ctx__media">
+          <div class="plate"><span class="plate__id" data-ctx-id></span></div>
+        </div>
+        <div>
+          <p class="small" style="color:var(--ink)" data-ctx-title></p>
+          <p class="caption" data-ctx-meta></p>
+        </div>
+      </div>
+
+      <form data-demo-form data-ref-prefix="ENQ" novalidate>
+        <input type="hidden" name="item_id" value="">
+        <input type="hidden" name="item_title" value="">
+        <input type="hidden" name="item_url" value="">
+        <input type="hidden" name="enquiry_type" value="general">
+
+        <div class="field">
+          <label class="field__label" for="eq-name">Name <span class="req">*</span></label>
+          <input class="input" id="eq-name" name="name" type="text" required autocomplete="name">
+          <p class="field__error">Please give us a name to reply to.</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="eq-email">Email <span class="req">*</span></label>
+          <input class="input" id="eq-email" name="email" type="email" inputmode="email" required autocomplete="email">
+          <p class="field__error">Please enter a valid email address.</p>
+        </div>
+
+        <!-- §21.4 / §3.3 — country drives routing and the manual compliance
+             review step. Required, not optional. -->
+        <div class="field">
+          <label class="field__label" for="eq-country">Country <span class="req">*</span></label>
+          <select class="input" id="eq-country" name="country" required>
+            <option value="">Select a country</option>
+            <option>Australia</option><option>Canada</option><option>China</option>
+            <option>France</option><option>Germany</option><option>Hong Kong SAR</option>
+            <option>India</option><option>Italy</option><option>Japan</option>
+            <option>Malaysia</option><option>Myanmar</option><option>Singapore</option>
+            <option>South Korea</option><option>Switzerland</option><option>Taiwan</option>
+            <option>Thailand</option><option>United Arab Emirates</option>
+            <option>United Kingdom</option><option>United States</option>
+            <option>Other — please state in your message</option>
+          </select>
+          <p class="field__hint">We ask because export documentation and compliance review depend on it.</p>
+          <p class="field__error">Please select a country.</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="eq-phone">Phone, WhatsApp or Viber</label>
+          <input class="input" id="eq-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel">
+          <p class="field__hint">Optional.</p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="eq-message">Your enquiry</label>
+          <textarea class="input" id="eq-message" name="message" rows="4"></textarea>
+        </div>
+
+        <fieldset style="border:0;padding:0;margin:0 0 var(--s-3)">
+          <legend class="field__label">What would you like?</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="want_price" value="1"><span>Price</span></label>
+            <label class="chip"><input type="checkbox" name="want_cert" value="1"><span>Full certificate</span></label>
+            <label class="chip"><input type="checkbox" name="want_media" value="1"><span>More images &amp; video</span></label>
+            <label class="chip"><input type="checkbox" name="want_call" value="1"><span>A video call</span></label>
+          </div>
+        </fieldset>
+
+        <!-- §32A — consent unticked by default -->
+        <div class="consent">
+          <input id="eq-consent" name="consent" type="checkbox" value="1" required>
+          <label for="eq-consent">
+            I agree to SP Gems holding these details in order to respond to my enquiry.
+            See the <a href="privacy.html">privacy notice</a>.
+          </label>
+        </div>
+
+        <button class="btn btn--primary btn--block" type="submit">Send enquiry</button>
+        <p class="caption mt-2">
+          Typically answered within one business day.
+          <span style="color:var(--gold-muted)">Response commitment to be confirmed by SP Gems.</span>
+        </p>
+      </form>
+
+      <div class="confirm" data-form-done hidden>
+        <p class="eyebrow eyebrow--gold">Enquiry received</p>
+        <h3 class="h3 mt-2">Thank you.</h3>
+        <p class="small mt-2" style="color:var(--ink-secondary)">
+          Your reference is <span class="confirm__ref" data-ref></span>. A specialist will
+          reply by email, normally within one business day. If your enquiry concerns a
+          stone above our high-value threshold it is routed for priority response.
+        </p>
+        <p class="caption mt-3">
+          This is a demo build — nothing was sent and no data was stored. In production
+          this posts to the enquiry API (§34) and the reference is issued server-side.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
+

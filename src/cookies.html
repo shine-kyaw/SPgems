@@ -1,0 +1,59 @@
+<!--meta
+title: Cookies — SP Gems
+desc: What this website stores in your browser, and why.
+nav: home
+-->
+<div class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span><span>Cookies</span>
+    </nav>
+    <div class="phead__inner">
+      <p class="eyebrow eyebrow--gold">Legal</p>
+      <h1 class="h1 phead__title mt-2">Cookies &amp; local storage</h1>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap wrap--text">
+    <div class="prose prose--wide">
+      <h2 style="margin-top:0">This demo build sets no cookies at all</h2>
+      <p>
+        Worth stating precisely, because &ldquo;we value your privacy&rdquo; banners have made the
+        word meaningless. This build sets no cookies. It does use two browser storage mechanisms,
+        both of which stay on your own device and are never transmitted anywhere:
+      </p>
+      <ul>
+        <li>
+          <strong>localStorage.</strong> Three preferences: whether you had the advanced filter
+          panel open, whether you prefer the catalogue in one column or two, and nothing else.
+        </li>
+        <li>
+          <strong>sessionStorage.</strong> Partly completed multi-step forms, so that going back
+          in your browser does not lose what you typed; and whether you dismissed the demo notice
+          at the top of the page. Cleared when you close the tab.
+        </li>
+      </ul>
+      <p>
+        Both are readable and clearable through your browser's developer tools. Neither is used to
+        identify or track you.
+      </p>
+
+      <h2>Fonts</h2>
+      <p>
+        This demo loads two typefaces from Google Fonts, which means your browser makes a request
+        to a Google server. In the production build the fonts are self-hosted and subset, so that
+        request does not happen &mdash; both for privacy and because self-hosted, preloaded fonts
+        are faster.
+      </p>
+
+      <h2>Analytics</h2>
+      <p class="caption" style="color:var(--gold-muted)">
+        None in this build. Once an analytics tool is chosen it must be documented here
+        accurately, with a working consent mechanism where consent is required, and third-party
+        scripts kept to a hard minimum &mdash; each one is a performance and a privacy cost.
+      </p>
+    </div>
+  </div>
+</section>

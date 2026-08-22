@@ -1,0 +1,85 @@
+<!--meta
+title: Exceptional Gems — SP Gems
+desc: A small curated selection of exceptional Burmese material. Full specifications published, price on request, private viewing by arrangement.
+nav: gemstones
+css: catalogue.css
+js: catalogue.js
+-->
+<!-- §12.6 — a small, curated selection in a distinctly more spacious layout,
+     larger imagery, longer narrative per stone. FR-CAT-031: full specifications
+     and treatment status public, price on request only. -->
+<div class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{BASE}}index.html">Home</a><span class="sep">/</span>
+      <a href="{{BASE}}gemstones/index.html">Gemstones</a><span class="sep">/</span><span>Exceptional</span>
+    </nav>
+    <div class="phead__inner">
+      <p class="eyebrow eyebrow--gold">The top tier</p>
+      <h1 class="h1 phead__title mt-2">Exceptional Gems</h1>
+      <p class="lede phead__lede">
+        A handful of stones at any one time. These are the pieces we would not put in a
+        three-column grid: material where the size, the saturation, the absence of treatment
+        and the confirmed origin arrive together, which happens rarely and not to a schedule.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap section--short">
+  <div class="needsconf" data-reveal style="max-width:70ch">
+    <b>How this tier works</b>
+    <p>
+      Specifications, dimensions, treatment status and laboratory report numbers are published
+      in full, exactly as they are on every other stone. Price is on request only &mdash; not
+      as a device, but because material at this level is priced against a market that moves,
+      and a fixed public number would be wrong within the quarter.
+    </p>
+    <p>
+      Enquiries from this tier are flagged for priority response, and a private viewing can be
+      arranged in Yangon or by video call before any commitment.
+    </p>
+  </div>
+</div>
+
+<div class="wrap mfilter">
+  <button class="btn btn--secondary btn--sm" type="button" data-open-filters aria-expanded="false">
+    <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M0 1h14M2.5 6h9M5 11h4" stroke="currentColor" stroke-width="1.2"/></svg>
+    Filter
+  </button>
+  <span class="caption" data-count></span>
+</div>
+
+<!-- Two-column, larger imagery — deliberately a different rhythm from the main
+     catalogue grid (§12.6). -->
+<div class="wrap section--short" data-catalogue data-page-size="12" data-scope='{"exceptional":true}'>
+  <div class="cat">
+    {{FILTER_RAIL}}
+    {{CAT_EXCEPTIONAL}}
+  </div>
+</div>
+
+<script>
+  /* §12.6 — the exceptional grid is two-up rather than three-up. Applied here
+     rather than in the shared stylesheet so the catalogue shell stays one
+     component. */
+  document.querySelectorAll('[data-scope*="exceptional"] [data-grid]').forEach(function (g) {
+    g.classList.remove('grid--3');
+    g.classList.add('grid--2', 'grid--stack-mobile');
+  });
+</script>
+
+<section class="section section--charcoal">
+  <div class="wrap wrap--narrow tc">
+    <p class="eyebrow eyebrow--dark">Private viewing</p>
+    <h2 class="h2 mt-2">Stones at this level are shown, not listed</h2>
+    <p class="lede mt-4" style="margin-inline:auto">
+      We will show you the stone on camera under daylight and incandescent light, walk you
+      through the laboratory report line by line, and put you in touch with the person who
+      cut it.
+    </p>
+    <div class="row mt-6" style="justify-content:center">
+      <a class="btn btn--primary" href="{{BASE}}consultation.html">Arrange a private viewing</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,189 @@
+<!--meta
+title: Contact — SP Gems
+desc: Contact SP Gems in Yangon. Enquiry routing by type, direct messaging on WhatsApp and Viber, and a real address with business hours.
+nav: contact
+css: catalogue.css
+-->
+<div class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span><span>Contact</span>
+    </nav>
+    <div class="phead__inner">
+      <p class="eyebrow eyebrow--gold">Contact</p>
+      <h1 class="h1 phead__title mt-2">Get in touch</h1>
+      <p class="lede phead__lede">
+        Every enquiry is read by a person. Tell us which kind of conversation you want and it
+        goes to the right one of us with the context attached.
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="section--short">
+  <div class="wrap">
+    <div class="split split--offset split--top">
+
+      <!-- §21 — enquiry routing by type -->
+      <div>
+        <form data-demo-form data-ref-prefix="ENQ" novalidate>
+          <div class="field">
+            <span class="field__label">What is this about? <span class="req">*</span></span>
+            <div class="optcards">
+              <label class="optcard"><input type="radio" name="enquiry_type" value="gemstone" required><span><b>A gemstone</b><em>A specific stone, or a sourcing brief</em></span></label>
+              <label class="optcard"><input type="radio" name="enquiry_type" value="jewellery" required><span><b>Jewellery</b><em>A piece from the collection</em></span></label>
+              <label class="optcard"><input type="radio" name="enquiry_type" value="bespoke" required><span><b>A commission</b><em>Something made for you</em></span></label>
+              <label class="optcard"><input type="radio" name="enquiry_type" value="trade" required><span><b>Trade or wholesale</b><em>Parcels, matched pairs, cutting to spec</em></span></label>
+              <label class="optcard"><input type="radio" name="enquiry_type" value="press" required><span><b>Press or partnership</b><em>Media, collaboration, other</em></span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="c-ref">Reference, if you have one</label>
+            <input class="input" id="c-ref" name="item_id" type="text" placeholder="e.g. SPG-R-0142">
+            <p class="field__hint">
+              Enquiring from a stone's page carries the reference automatically &mdash; it is
+              worth using that route, because it keeps the two connected.
+            </p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="c-name">Name <span class="req">*</span></label>
+            <input class="input" id="c-name" name="name" type="text" required autocomplete="name">
+            <p class="field__error">Please give us a name to reply to.</p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="c-email">Email <span class="req">*</span></label>
+            <input class="input" id="c-email" name="email" type="email" inputmode="email" required autocomplete="email">
+            <p class="field__error">Please enter a valid email address.</p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="c-country">Country <span class="req">*</span></label>
+            <select class="input" id="c-country" name="country" required>
+              <option value="">Select a country</option>
+              <option>Australia</option><option>Canada</option><option>China</option>
+              <option>France</option><option>Germany</option><option>Hong Kong SAR</option>
+              <option>India</option><option>Italy</option><option>Japan</option>
+              <option>Malaysia</option><option>Myanmar</option><option>Singapore</option>
+              <option>South Korea</option><option>Switzerland</option><option>Taiwan</option>
+              <option>Thailand</option><option>United Arab Emirates</option>
+              <option>United Kingdom</option><option>United States</option>
+              <option>Other — please state in your message</option>
+            </select>
+            <p class="field__hint">We ask because export documentation and compliance review depend on it.</p>
+            <p class="field__error">Please select a country.</p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="c-phone">Phone, WhatsApp or Viber</label>
+            <input class="input" id="c-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel">
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="c-message">Your message <span class="req">*</span></label>
+            <textarea class="input" id="c-message" name="message" rows="5" required></textarea>
+            <p class="field__error">Please tell us what you would like.</p>
+          </div>
+
+          <div class="consent">
+            <input id="c-consent" name="consent" type="checkbox" value="1" required>
+            <label for="c-consent">
+              I agree to SP Gems holding these details in order to respond.
+              See the <a href="privacy.html">privacy notice</a>.
+            </label>
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit">Send enquiry</button>
+          <p class="caption mt-2">
+            Typically answered within one business day.
+            <span style="color:var(--gold-muted)">Response commitment to be confirmed.</span>
+          </p>
+        </form>
+
+        <div class="confirm" data-form-done hidden>
+          <p class="eyebrow eyebrow--gold">Enquiry received</p>
+          <h2 class="h2 mt-2">Thank you.</h2>
+          <p class="lede mt-3">Your reference is <span class="confirm__ref" data-ref></span>.</p>
+          <p class="small mt-3" style="color:var(--ink-secondary)">
+            A specialist will reply by email, normally within one business day.
+          </p>
+          <p class="caption mt-4">This is a demo build. Nothing was sent and no data was stored.</p>
+        </div>
+      </div>
+
+      <!-- Contact details -->
+      <div class="stack-6">
+        <div>
+          <p class="eyebrow eyebrow--gold">The office</p>
+          <p class="lede mt-2">
+            No. 30A, Pyay Road (7 Mile)<br>
+            Mayangone Township<br>
+            Yangon, Myanmar
+          </p>
+          <p class="caption mt-2">PO Box 11061</p>
+          <!-- §18.2 — a styled static map, not an embedded third-party iframe:
+               a map embed is a performance and privacy cost on every page load. -->
+          <div class="mt-3" style="aspect-ratio:16/10;position:relative;overflow:hidden;border:1px solid var(--rule)">
+            <div class="plate plate--cert">
+              <span class="plate__id">Map</span>
+              <span class="plate__shot">Styled static map</span>
+              <span class="plate__spec">A static, brand-styled map image, not a third-party interactive embed.</span>
+              <span class="plate__pending">Asset pending</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="eyebrow eyebrow--gold">Direct</p>
+          <table class="spec-table mt-2">
+            <tbody>
+              <tr><th scope="row">Email</th><td><a href="mailto:enquiries@spgems-myanmar.com" style="color:var(--ink)">enquiries@spgems-myanmar.com</a></td></tr>
+              <tr><th scope="row">Telephone</th><td><a href="tel:+9516603970" style="color:var(--ink)">+95 1 660 397</a><br><a href="tel:+9516660520" style="color:var(--ink)">+95 1 666 052</a><br><a href="tel:+9516660530" style="color:var(--ink)">+95 1 666 053</a></td></tr>
+              <tr><th scope="row">Viber</th><td><a href="viber://chat?number=%2B959788440929" style="color:var(--ink)">+95 9 788 440 929</a></td></tr>
+              <tr><th scope="row">Fax</th><td>+95 1 664 574</td></tr>
+            </tbody>
+          </table>
+          <div class="row mt-3">
+            <a class="btn btn--secondary btn--sm" href="https://wa.me/">WhatsApp</a>
+            <a class="btn btn--secondary btn--sm" href="viber://chat?number=%2B959788440929">Viber</a>
+          </div>
+        </div>
+
+        <div>
+          <p class="eyebrow eyebrow--gold">Time zone</p>
+          <p class="small mt-2" style="color:var(--ink-secondary)">
+            We are on Myanmar Standard Time, UTC+06:30. It is currently
+            <strong data-yangon-now style="color:var(--ink)">—</strong>.
+            Your time zone appears to be <strong data-tz-local style="color:var(--ink)">unknown</strong>.
+          </p>
+        </div>
+
+        <div class="needsconf">
+          <b>Needs confirmation</b>
+          <p>
+            Business hours, working days and holiday closures. Currency of the telephone and fax
+            numbers above, which are carried over from the existing site.
+          </p>
+          <p>
+            The existing site uses two Gmail addresses for all correspondence. §18.2 treats
+            migration to a professional domain address as a P0 trust item: no high-value B2B
+            correspondence should run through Gmail. The address shown here assumes that
+            migration.
+          </p>
+        </div>
+
+        <div>
+          <p class="eyebrow eyebrow--gold">Other routes</p>
+          <ul class="stack">
+            <li><a class="link" href="consultation.html">Arrange a consultation <span class="arw">&rarr;</span></a></li>
+            <li><a class="link" href="jewellery/bespoke.html">Start a commission <span class="arw">&rarr;</span></a></li>
+            <li><a class="link" href="trade.html">Trade &amp; wholesale <span class="arw">&rarr;</span></a></li>
+            <li><a class="link" href="about/how-buying-works.html">How buying works <span class="arw">&rarr;</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

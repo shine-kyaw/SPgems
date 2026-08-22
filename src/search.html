@@ -1,0 +1,205 @@
+<!--meta
+title: Search — SP Gems
+desc: Search gemstones, jewellery, collections and articles. An exact stone reference or certificate number resolves straight to the record.
+nav: home
+css: catalogue.css
+-->
+<div class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span><span>Search</span>
+    </nav>
+    <div class="phead__inner">
+      <p class="eyebrow eyebrow--gold">Search</p>
+      <h1 class="h1 phead__title mt-2">Search</h1>
+      <p class="lede phead__lede">
+        Stones, jewellery, articles and pages. Typing a stone reference such as
+        <span class="stone-id" style="color:var(--ink)">SPG-R-0142</span> or a certificate number
+        takes you straight to the record.
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="section--short">
+  <div class="wrap wrap--narrow">
+    <div class="field">
+      <label class="field__label" for="q">What are you looking for?</label>
+      <input class="input" id="q" type="search" autocomplete="off" autofocus
+             placeholder="unheated mogok ruby, spinel, pigeon&rsquo;s blood, SPG-R-0142&hellip;"
+             style="font-size:20px;padding:12px 0">
+      <p class="field__hint">
+        Typo-tolerant: &ldquo;mogock&rdquo;, &ldquo;spinnel&rdquo; and
+        &ldquo;padparadsha&rdquo; all resolve.
+      </p>
+    </div>
+
+    <p class="small mt-4" aria-live="polite" id="q-count" style="color:var(--ink-secondary)"></p>
+    <div id="q-results" class="mt-4"></div>
+
+    <div id="q-empty" class="zero mt-6" hidden>
+      <p class="eyebrow eyebrow--gold">Nothing found</p>
+      <h2 class="h3 mt-2">We have nothing matching that.</h2>
+      <p class="small mt-2" style="color:var(--ink-secondary);max-width:50ch;margin-inline:auto">
+        Our catalogue is what we hold today. If you are looking for something specific, telling
+        us is usually faster than searching for it.
+      </p>
+      <div class="zero__acts">
+        <a class="btn btn--primary btn--sm" href="contact.html" data-enquire
+           data-item-kind="sourcing" data-item-id="SOURCING"
+           data-item-title="Sourcing request" data-item-meta="From a search with no results">
+          Tell us what you are looking for
+        </a>
+        <a class="btn btn--secondary btn--sm" href="gemstones/index.html">Browse the catalogue</a>
+      </div>
+    </div>
+
+    <div id="q-prompt" class="mt-6">
+      <p class="eyebrow mb-3">Try</p>
+      <div class="chips">
+        <button class="btn btn--secondary btn--sm" type="button" data-q="unheated ruby">Unheated ruby</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-q="mogok spinel">Mogok spinel</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-q="pigeon">Pigeon&rsquo;s blood</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-q="matched pair">Matched pairs</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-q="SPG-R-0142">SPG-R-0142</button>
+        <button class="btn btn--secondary btn--sm" type="button" data-q="star sapphire">Star sapphire</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script id="search-index" type="application/json">{{SEARCH_DATA}}</script>
+<script>
+(function () {
+  'use strict';
+  var DATA = JSON.parse(document.getElementById('search-index').textContent);
+  var input = document.getElementById('q');
+  var out   = document.getElementById('q-results');
+  var count = document.getElementById('q-count');
+  var empty = document.getElementById('q-empty');
+  var prompt = document.getElementById('q-prompt');
+
+  var GROUPS = [
+    { key: 'gemstone',  label: 'Gemstones' },
+    { key: 'jewellery', label: 'Jewellery' },
+    { key: 'article',   label: 'Journal' },
+    { key: 'page',      label: 'Pages' }
+  ];
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
+    });
+  }
+
+  /* FR-SRCH-022 — typo tolerance is a requirement, not a nicety.
+     Levenshtein distance with an early bail-out, applied per token. */
+  function lev(a, b) {
+    if (a === b) return 0;
+    if (Math.abs(a.length - b.length) > 2) return 9;
+    var prev = [], cur = [], i, j;
+    for (j = 0; j <= b.length; j++) prev[j] = j;
+    for (i = 1; i <= a.length; i++) {
+      cur[0] = i;
+      for (j = 1; j <= b.length; j++) {
+        cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1,
+                          prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      }
+      prev = cur.slice();
+    }
+    return prev[b.length];
+  }
+
+  function score(row, tokens) {
+    var total = 0;
+    for (var i = 0; i < tokens.length; i++) {
+      var t = tokens[i];
+      if (t.length < 2) continue;
+      var best = 0;
+      if (row.k.indexOf(t) >= 0) {
+        best = 10;
+      } else if (t.length >= 4) {
+        // fuzzy match against each indexed word
+        var words = row.k.split(/[^a-z0-9]+/);
+        for (var w = 0; w < words.length; w++) {
+          if (words[w].length < 3) continue;
+          var d = lev(t, words[w]);
+          if (d <= (t.length >= 6 ? 2 : 1)) { best = Math.max(best, 6 - d); }
+        }
+      }
+      if (!best) return 0;          // every token must match something
+      total += best;
+    }
+    return total;
+  }
+
+  function run(q) {
+    q = (q || '').trim();
+    if (!q) {
+      out.innerHTML = ''; count.textContent = '';
+      empty.hidden = true; prompt.hidden = false;
+      return;
+    }
+    prompt.hidden = true;
+
+    /* FR-SRCH-021 — an exact stone ID or certificate number goes straight
+       to the record. Sales staff use this on calls constantly. */
+    var exact = DATA.filter(function (r) {
+      return r.s && r.s.toLowerCase() === q.toLowerCase();
+    });
+    if (exact.length === 1) { window.location.href = exact[0].u; return; }
+
+    var tokens = q.toLowerCase().split(/\s+/);
+    var hits = DATA.map(function (r) { return { r: r, n: score(r, tokens) }; })
+                   .filter(function (x) { return x.n > 0; })
+                   .sort(function (a, b) { return b.n - a.n; });
+
+    count.innerHTML = hits.length
+      ? '<b>' + hits.length + '</b> result' + (hits.length === 1 ? '' : 's') + ' for &ldquo;' + esc(q) + '&rdquo;'
+      : '';
+    empty.hidden = hits.length > 0;
+
+    var html = '';
+    GROUPS.forEach(function (grp) {
+      var rows = hits.filter(function (x) { return x.r.g === grp.key; });
+      if (!rows.length) return;
+      html += '<div class="mt-6"><p class="eyebrow eyebrow--gold mb-2">' + grp.label +
+              ' <span style="color:var(--ink-tertiary)">(' + rows.length + ')</span></p><div>';
+      rows.forEach(function (x) {
+        html += '<a href="' + x.r.u + '" style="display:block;text-decoration:none;color:inherit;' +
+                'padding:14px 0;border-bottom:1px solid var(--rule)">' +
+                '<span style="font-family:var(--font-display);font-size:20px;line-height:1.25">' +
+                esc(x.r.t) + '</span>' +
+                (x.r.s ? '<span class="stone-id" style="margin-left:10px">' + esc(x.r.s) + '</span>' : '') +
+                '<span class="caption" style="display:block;margin-top:4px">' + esc(x.r.m) + '</span>' +
+                '</a>';
+      });
+      html += '</div></div>';
+    });
+    out.innerHTML = html;
+  }
+
+  var timer;
+  input.addEventListener('input', function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      run(input.value);
+      var u = new URL(window.location);
+      if (input.value) { u.searchParams.set('q', input.value); }
+      else { u.searchParams.delete('q'); }
+      history.replaceState(null, '', u);
+    }, 140);
+  });
+
+  document.querySelectorAll('[data-q]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      input.value = b.getAttribute('data-q');
+      input.focus();
+      run(input.value);
+    });
+  });
+
+  var initial = new URLSearchParams(location.search).get('q');
+  if (initial) { input.value = initial; run(initial); }
+})();
+</script>

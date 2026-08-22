@@ -1,0 +1,278 @@
+<!--meta
+title: Bespoke Commissions — SP Gems
+desc: Commission a piece around a stone from our Mogok catalogue, or around your own. Three short steps, all skippable — a commission starts as a conversation.
+nav: jewellery
+css: catalogue.css
+-->
+<div class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{BASE}}index.html">Home</a><span class="sep">/</span>
+      <a href="{{BASE}}jewellery/index.html">Jewellery</a><span class="sep">/</span><span>Bespoke</span>
+    </nav>
+    <div class="phead__inner">
+      <p class="eyebrow eyebrow--gold">Commissions</p>
+      <h1 class="h1 phead__title mt-2">Bespoke</h1>
+      <!-- §15.1 — the brief proposed a nine-step wizard. A long form at the
+           start of a bespoke relationship converts poorly: the buyer does not
+           yet know their own answers, and being interrogated before any human
+           contact feels transactional at exactly the moment it should feel
+           personal. Three steps, all of them skippable. -->
+      <p class="lede phead__lede">
+        A commission is the beginning of a conversation, not a specification handover. There
+        are three short steps below and you can skip straight to the end of them. Everything
+        we have not asked, we will ask you properly, in person or on a call.
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="section--short">
+  <div class="wrap wrap--narrow">
+    <div data-steps="bespoke">
+      <!-- Step indicator -->
+      <div class="steps" aria-hidden="true">
+        <span class="steps__i is-active"><b>1</b> What you imagine</span>
+        <span class="steps__i"><b>2</b> The stone</span>
+        <span class="steps__i"><b>3</b> Reaching you</span>
+      </div>
+
+      <form data-demo-form data-ref-prefix="BSP" novalidate>
+
+        <!-- ===== Step 1 — all optional except type ===================== -->
+        <fieldset class="fstep" style="border:0;padding:0;margin:0">
+          <legend class="h3 mb-4" style="padding:0">What are you imagining?</legend>
+
+          <div class="field">
+            <span class="field__label">Piece type <span class="req">*</span></span>
+            <div class="optcards">
+              <label class="optcard"><input type="radio" name="piece_type" value="ring" required><span><b>Ring</b><em>Engagement, anniversary, or for yourself</em></span></label>
+              <label class="optcard"><input type="radio" name="piece_type" value="necklace" required><span><b>Necklace or pendant</b><em>Including chain and fittings</em></span></label>
+              <label class="optcard"><input type="radio" name="piece_type" value="earrings" required><span><b>Earrings</b><em>We can cut a matched pair to order</em></span></label>
+              <label class="optcard"><input type="radio" name="piece_type" value="other" required><span><b>Something else</b><em>Bracelet, bangle, brooch, a set</em></span></label>
+            </div>
+          </div>
+
+          <fieldset style="border:0;padding:0;margin:0 0 var(--s-3)">
+            <legend class="field__label">Occasion</legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="occasion" value="engagement"><span>Engagement</span></label>
+              <label class="chip"><input type="checkbox" name="occasion" value="anniversary"><span>Anniversary</span></label>
+              <label class="chip"><input type="checkbox" name="occasion" value="gift"><span>A gift</span></label>
+              <label class="chip"><input type="checkbox" name="occasion" value="self"><span>For myself</span></label>
+              <label class="chip"><input type="checkbox" name="occasion" value="other"><span>Other</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label class="field__label" for="bsp-idea">Tell us about the piece you have in mind</label>
+            <textarea class="input" id="bsp-idea" name="idea" rows="4"
+              placeholder="As much or as little as you like. If you do not know yet, that is a normal place to start."></textarea>
+            <p class="field__hint">Around 500 characters is plenty. We are not counting.</p>
+          </div>
+
+          <div class="field">
+            <span class="field__label">Inspiration images</span>
+            <p class="field__hint" style="margin-top:0">
+              Up to five images, 10 MB each. Uploads are stored privately, stripped of EXIF
+              metadata on arrival &mdash; phone photographs routinely carry GPS coordinates
+              &mdash; and re-encoded server-side.
+            </p>
+            <div class="needsconf mt-2">
+              <b>Not wired in this demo</b>
+              <p>File upload requires a server. The security requirements are specified in §15.4: magic-byte validation rather than file extensions, non-public storage with randomised object keys, signed short-lived URLs, and rate limiting.</p>
+            </div>
+          </div>
+
+          <div class="row mt-6">
+            <button class="btn btn--primary" type="button" data-step-next>Continue</button>
+            <!-- FR-BSP-001 — a persistent escape hatch, present throughout -->
+            <button class="btn btn--secondary" type="button" data-step-go="2">Skip to contact details</button>
+          </div>
+        </fieldset>
+
+        <!-- ===== Step 2 — all optional ================================= -->
+        <fieldset class="fstep" style="border:0;padding:0;margin:0" hidden>
+          <legend class="h3 mb-4" style="padding:0">The stone</legend>
+
+          <div class="field">
+            <span class="field__label">Where are you starting from?</span>
+            <div class="optcards">
+              <label class="optcard"><input type="radio" name="stone_path" value="seen"><span><b>I have seen a stone on your site</b><em>Tell us the reference below</em></span></label>
+              <label class="optcard"><input type="radio" name="stone_path" value="guidance"><span><b>I would like your guidance</b><em>We will propose two or three</em></span></label>
+              <label class="optcard"><input type="radio" name="stone_path" value="own"><span><b>I have my own stone</b><em>We will set it for you</em></span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="bsp-ref">Stone reference</label>
+            <input class="input" id="bsp-ref" name="stone_ref" type="text" placeholder="e.g. SPG-R-0142">
+            <p class="field__hint">Optional. Every stone page shows its reference under the title.</p>
+          </div>
+
+          <fieldset style="border:0;padding:0;margin:0 0 var(--s-3)">
+            <legend class="field__label">Preferred gem type</legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="gem_type" value="ruby"><span>Ruby</span></label>
+              <label class="chip"><input type="checkbox" name="gem_type" value="sapphire"><span>Sapphire</span></label>
+              <label class="chip"><input type="checkbox" name="gem_type" value="spinel"><span>Spinel</span></label>
+              <label class="chip"><input type="checkbox" name="gem_type" value="open"><span>Open to suggestions</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset style="border:0;padding:0;margin:0 0 var(--s-3)">
+            <legend class="field__label">Approximate carat</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="carat_range" value="under1"><span>Under 1 ct</span></label>
+              <label class="chip"><input type="radio" name="carat_range" value="1-2"><span>1 &ndash; 2 ct</span></label>
+              <label class="chip"><input type="radio" name="carat_range" value="2-4"><span>2 &ndash; 4 ct</span></label>
+              <label class="chip"><input type="radio" name="carat_range" value="4plus"><span>4 ct and above</span></label>
+              <label class="chip"><input type="radio" name="carat_range" value="unsure"><span>Not sure yet</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset style="border:0;padding:0;margin:0 0 var(--s-3)">
+            <legend class="field__label">Preferred metal</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="metal" value="yellow"><span>18k yellow</span></label>
+              <label class="chip"><input type="radio" name="metal" value="white"><span>18k white</span></label>
+              <label class="chip"><input type="radio" name="metal" value="rose"><span>18k rose</span></label>
+              <label class="chip"><input type="radio" name="metal" value="platinum"><span>Platinum</span></label>
+              <label class="chip"><input type="radio" name="metal" value="advise"><span>Advise me</span></label>
+            </div>
+          </fieldset>
+
+          <!-- §15.2 — making budget mandatory suppresses exactly the high-end
+               enquiries most worth having. "Prefer to discuss" is prominent. -->
+          <fieldset style="border:0;padding:0;margin:0 0 var(--s-3)">
+            <legend class="field__label">Budget</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="budget" value="under5"><span>Under US$5,000</span></label>
+              <label class="chip"><input type="radio" name="budget" value="5-15"><span>US$5,000 &ndash; 15,000</span></label>
+              <label class="chip"><input type="radio" name="budget" value="15-50"><span>US$15,000 &ndash; 50,000</span></label>
+              <label class="chip"><input type="radio" name="budget" value="50plus"><span>US$50,000+</span></label>
+              <label class="chip"><input type="radio" name="budget" value="discuss"><span>Prefer to discuss</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset style="border:0;padding:0;margin:0 0 var(--s-3)">
+            <legend class="field__label">Timeline</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="timeline" value="norush"><span>No rush</span></label>
+              <label class="chip"><input type="radio" name="timeline" value="3months"><span>Within 3 months</span></label>
+              <label class="chip"><input type="radio" name="timeline" value="date"><span>I have a specific date</span></label>
+            </div>
+          </fieldset>
+
+          <div class="row mt-6">
+            <button class="btn btn--secondary" type="button" data-step-prev>Back</button>
+            <button class="btn btn--primary" type="button" data-step-next>Continue</button>
+          </div>
+        </fieldset>
+
+        <!-- ===== Step 3 — required ==================================== -->
+        <fieldset class="fstep" style="border:0;padding:0;margin:0" hidden>
+          <legend class="h3 mb-4" style="padding:0">How should we reach you?</legend>
+
+          <div class="field">
+            <label class="field__label" for="bsp-name">Name <span class="req">*</span></label>
+            <input class="input" id="bsp-name" name="name" type="text" required autocomplete="name">
+            <p class="field__error">Please give us a name.</p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="bsp-email">Email <span class="req">*</span></label>
+            <input class="input" id="bsp-email" name="email" type="email" inputmode="email" required autocomplete="email">
+            <p class="field__error">Please enter a valid email address.</p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="bsp-country">Country <span class="req">*</span></label>
+            <select class="input" id="bsp-country" name="country" required>
+              <option value="">Select a country</option>
+              <option>Australia</option><option>Canada</option><option>China</option>
+              <option>France</option><option>Germany</option><option>Hong Kong SAR</option>
+              <option>India</option><option>Italy</option><option>Japan</option>
+              <option>Malaysia</option><option>Myanmar</option><option>Singapore</option>
+              <option>South Korea</option><option>Switzerland</option><option>Taiwan</option>
+              <option>Thailand</option><option>United Arab Emirates</option>
+              <option>United Kingdom</option><option>United States</option>
+              <option>Other — please state below</option>
+            </select>
+            <p class="field__hint">Drives routing and the compliance review step.</p>
+            <p class="field__error">Please select a country.</p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="bsp-phone">Phone, WhatsApp or Viber</label>
+            <input class="input" id="bsp-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel">
+          </div>
+
+          <fieldset style="border:0;padding:0;margin:0 0 var(--s-3)">
+            <legend class="field__label">Preferred contact method</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="contact_pref" value="email"><span>Email</span></label>
+              <label class="chip"><input type="radio" name="contact_pref" value="whatsapp"><span>WhatsApp</span></label>
+              <label class="chip"><input type="radio" name="contact_pref" value="viber"><span>Viber</span></label>
+              <label class="chip"><input type="radio" name="contact_pref" value="call"><span>A call</span></label>
+            </div>
+          </fieldset>
+
+          <div class="consent">
+            <input id="bsp-consent" name="consent" type="checkbox" value="1" required>
+            <label for="bsp-consent">
+              I agree to SP Gems holding these details in order to discuss this commission.
+              See the <a href="{{BASE}}privacy.html">privacy notice</a>.
+            </label>
+          </div>
+
+          <div class="row mt-6">
+            <button class="btn btn--secondary" type="button" data-step-prev>Back</button>
+            <button class="btn btn--primary" type="submit">Send commission enquiry</button>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="confirm" data-form-done hidden>
+        <p class="eyebrow eyebrow--gold">Commission enquiry received</p>
+        <h2 class="h2 mt-2">Thank you.</h2>
+        <p class="lede mt-3">Your reference is <span class="confirm__ref" data-ref></span>.</p>
+        <div class="prose mt-4">
+          <p>
+            A specialist will read this and reply by email, normally within one business day.
+            The reply will be a real message from a person, not an automated
+            acknowledgement &mdash; and it will usually contain questions, because the
+            interesting part of a commission is the part a form cannot capture.
+          </p>
+        </div>
+        <p class="caption mt-4">
+          This is a demo build. Nothing was sent and no data was stored.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--ivory-deep">
+  <div class="wrap wrap--text">
+    <div class="sec-head">
+      <div class="sec-head__title">
+        <p class="eyebrow eyebrow--gold">The process</p>
+        <h2 class="h2">How a commission runs</h2>
+      </div>
+    </div>
+    <div class="needsconf" data-reveal style="max-width:74ch">
+      <b>Needs confirmation from SP Gems</b>
+      <p>
+        This section should describe SP Gems' real commission process and cannot be written
+        without it: who owns the process, the typical timeline from enquiry to delivery, what
+        deposit terms apply, and how many revisions of a design are normal.
+      </p>
+      <p>
+        Publishing an invented process would be worse than publishing nothing &mdash; a buyer
+        who is told six weeks and waits fourteen has been misled by the website, and that is
+        the website's fault.
+      </p>
+    </div>
+  </div>
+</section>

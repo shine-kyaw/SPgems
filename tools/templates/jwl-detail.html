@@ -1,0 +1,88 @@
+<!--meta
+title: {{TITLE}} — SP Gems
+desc: {{DESC}}
+nav: jewellery
+css: catalogue.css
+js: gem.js
+viewer: yes
+-->
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="{{BASE}}index.html">Home</a><span class="sep">/</span>
+    <a href="{{BASE}}jewellery/index.html">Jewellery</a><span class="sep">/</span>
+    {{CRUMB_COLLECTION}}
+    <span>{{PIECE_ID}}</span>
+  </nav>
+</div>
+
+<!-- §14.3 — same architecture as the gemstone detail page. The differences are
+     deliberate: media emphasis shifts to context, and the centre-stone module
+     is the highest-value block on the page. -->
+<div class="wrap section--short" data-detail>
+  <div class="gem">
+    <div class="gem__media">
+      <div hidden>{{MEDIA_ITEMS}}</div>
+      <div class="gem__hero" data-hero data-open-viewer="0" role="button" tabindex="0"
+           aria-label="Open full-screen viewer"></div>
+      <p class="gem__zoomhint no-mobile" aria-hidden="true">
+        <svg width="13" height="13" viewBox="0 0 15 15" fill="none"><circle cx="6.2" cy="6.2" r="4.6" stroke="currentColor" stroke-width="1.2"/><path d="M4.2 6.2h4M6.2 4.2v4M9.8 9.8 14 14" stroke="currentColor" stroke-width="1.2"/></svg>
+        Click to enlarge
+      </p>
+      <div class="gem__thumbs" aria-label="Images">{{THUMBS}}</div>
+      <div class="gem__carousel">
+        <div class="gem__track" data-track>{{SLIDES}}</div>
+        <span class="gem__counter tnum" data-mcount>1 / {{MEDIA_COUNT}}</span>
+        <div class="gem__dots" data-dots aria-hidden="true">{{DOTS}}</div>
+      </div>
+    </div>
+
+    <div class="gem__rail">
+      <p class="eyebrow gem__eyebrow">{{EYEBROW}}</p>
+      <h1 class="h2 gem__title">{{TITLE}}</h1>
+      <p class="gem__sub">{{SUBTITLE}}</p>
+      <p class="stone-id mt-2">{{PIECE_ID}}</p>
+
+      <div class="gem__markers">{{MARKERS}}</div>
+
+      <table class="spec-table mt-4">
+        <caption class="visually-hidden">Specifications</caption>
+        <tbody>{{KEY_SPECS}}</tbody>
+      </table>
+
+      <div class="gem__price">
+        <p class="amount">{{PRICE}}</p>
+        {{PRICE_NOTE}}
+        <p class="avail {{AVAIL_CLASS}}"><i aria-hidden="true"></i>{{AVAIL_LABEL}}</p>
+      </div>
+
+      <div class="gem__cta" data-abar-after>{{CTA}}</div>
+    </div>
+  </div>
+</div>
+
+{{BLOCK_CENTRE_STONE}}
+
+<!-- §14.3 — materials and craftsmanship, linking to /mogok/craftsmanship -->
+<section class="section section--charcoal">
+  <div class="wrap wrap--text">
+    <div class="split split--top" data-reveal>
+      <div>
+        <p class="eyebrow eyebrow--dark">Making</p>
+        <h2 class="h2 mt-2">Made in Yangon, around a stone we cut</h2>
+      </div>
+      <div class="prose">
+        <p>{{DESIGN_NOTES}}</p>
+        <p>
+          The setting is made in our Yangon workshop by the bench that works alongside our
+          cutters. That proximity is the practical part of vertical integration: the person
+          setting the stone can ask the person who cut it why the pavilion is the depth it is.
+        </p>
+        <p><a class="link" href="{{BASE}}mogok/craftsmanship.html">Cutting &amp; craftsmanship <span class="arw">&rarr;</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{BLOCK_BESPOKE}}
+{{BLOCK_GALLERY}}
+{{BLOCK_RELATED}}
