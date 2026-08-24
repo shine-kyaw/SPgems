@@ -1,9 +1,5 @@
-# Nothing generated is ignored: the built HTML at the repository root is
-# committed on purpose, so Vercel serves it directly with no build step.
-
-# OS / editor noise
-Thumbs.db
-Desktop.ini
 .DS_Store
-*.swp
-*~
+Thumbs.db
+node_modules/
+.vercel
+*.log
