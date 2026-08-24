@@ -158,7 +158,7 @@ p{margin:0; max-width:68ch}
   border-bottom:1px solid transparent; transition:color 180ms var(--ease-in), border-color 180ms var(--ease-in);
 }
 .nav a:hover,.nav a[aria-current="page"]{color:var(--ink); border-bottom-color:var(--ink)}
-.hdr .btn{padding:12px 22px; font-size:11px}
+/* header button uses the standard site button */
 .burger{display:none; margin-left:auto; background:none; border:1px solid var(--rule); padding:10px 14px; border-radius:2px; cursor:pointer; font-size:11px; letter-spacing:.12em; text-transform:uppercase}
 
 /* ---------- hero — max 80vh (PRD 29 s1) ---------- */
@@ -3092,7 +3092,7 @@ F = defaults();
 .dropdown a span{font-size:12.5px; color:var(--ink-meta); line-height:1.5; letter-spacing:0; text-transform:none}
 
 .hdr-cta{display:flex; align-items:center; gap:10px; margin-left:var(--s3)}
-.hdr .btn{padding:12px 20px; font-size:10.5px; letter-spacing:.11em}
+/* header button uses the standard site button */
 
 /* --- full-screen mobile menu (SDD §19.8) --- */
 .mobmenu{
@@ -4219,5 +4219,164 @@ viewCatalogue = function(){
   return html;
 };
 </script>
+
+<style>
+/* ============================================================
+   BUTTONS — copied from the live site's computed values.
+     bg #333333 · #fff text · 0.8px solid rgba(0,0,0,.05)
+     radius 0 · padding 0 1.2em · line-height 2.4em (h 38.85px)
+     Lato 700, 0.97em, letter-spacing .03em, UPPERCASE
+     hover: box-shadow inset 0 0 0 100px rgba(0,0,0,.2)
+            (Flatsome darkens the fill rather than swapping colour)
+     transition: transform .3s, border .3s, background .3s, box-shadow .3s
+   ============================================================ */
+.btn,
+.a-btn,
+.mobmenu-x,
+.vbtn,
+.slot,
+.a-view,
+.chip,
+.news button{
+  display:inline-block;
+  box-sizing:border-box;
+  font-family:var(--f-body);
+  font-size:.97em;
+  font-weight:700;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  line-height:2.4em;
+  min-height:2.5em;
+  padding:0 1.2em;
+  margin:0;
+  border:.8px solid rgba(0,0,0,.05);
+  border-radius:0;
+  background-color:var(--ink);
+  color:#fff;
+  text-align:center;
+  text-decoration:none;
+  cursor:pointer;
+  box-shadow:none;
+  text-shadow:none;
+  transition:transform .3s, border .3s, background .3s, box-shadow .3s;
+}
+.btn:hover,
+.a-btn:hover,
+.mobmenu-x:hover,
+.vbtn:hover,
+.slot:hover,
+.a-view:hover,
+.chip:hover,
+.news button:hover{
+  box-shadow:inset 0 0 0 100px rgba(0,0,0,.2);
+  color:#fff;
+  opacity:1;
+  outline:none;
+}
+.btn:active,.a-btn:active{ transform:translateY(1px); }
+
+/* outline variant — Flatsome .is-outline: 1.6px border, transparent fill */
+.btn-secondary,
+.a-btn:not(.a-btn-p):not(.a-btn-d),
+.mobmenu-x,
+.a-view,
+.chip,
+.slot{
+  background-color:transparent;
+  border:1.6px solid var(--ink);
+  color:var(--ink);
+  line-height:2.19em;
+}
+.btn-secondary:hover,
+.a-btn:not(.a-btn-p):not(.a-btn-d):hover,
+.mobmenu-x:hover,
+.a-view:hover,
+.chip:hover,
+.slot:hover{
+  background-color:var(--ink);
+  border-color:var(--ink);
+  color:#fff;
+  box-shadow:inset 0 0 0 100px rgba(0,0,0,.2);
+}
+
+/* solid stays solid */
+.btn-primary,.a-btn-p{
+  background-color:var(--ink);
+  border:.8px solid rgba(0,0,0,.05);
+  color:#fff;
+  line-height:2.4em;
+}
+.btn-primary:hover,.a-btn-p:hover{
+  background-color:var(--ink);
+  border-color:rgba(0,0,0,.05);
+  color:#fff;
+  box-shadow:inset 0 0 0 100px rgba(0,0,0,.2);
+}
+.btn-full{width:100%}
+
+/* on photographic and black grounds the outline inverts to white */
+.hero-cta .btn-secondary,
+.band-dark .btn-secondary,
+.mobmenu .btn-secondary{
+  border-color:rgba(255,255,255,.7);
+  color:#fff;
+  background-color:transparent;
+}
+.hero-cta .btn-secondary:hover,
+.band-dark .btn-secondary:hover,
+.mobmenu .btn-secondary:hover{
+  background-color:#fff;
+  border-color:#fff;
+  color:var(--ink);
+  box-shadow:inset 0 0 0 100px rgba(0,0,0,.06);
+}
+/* solid button keeps the site's own #333 on every ground */
+.hero-cta .btn-primary,
+.band-dark .btn-primary,
+.mobmenu .btn-primary{
+  background-color:var(--ink);
+  border-color:rgba(0,0,0,.05);
+  color:#fff;
+}
+.hero-cta .btn-primary:hover,
+.band-dark .btn-primary:hover,
+.mobmenu .btn-primary:hover{
+  background-color:var(--ink);
+  color:#fff;
+  box-shadow:inset 0 0 0 100px rgba(255,255,255,.16);
+}
+
+/* destructive keeps its own colour but the same mechanics */
+.a-btn-d{ background-color:transparent; border:1.6px solid var(--error); color:var(--error); line-height:2.19em; }
+.a-btn-d:hover{ background-color:var(--error); border-color:var(--error); color:#fff; box-shadow:inset 0 0 0 100px rgba(0,0,0,.2); }
+
+/* selected states */
+.a-view[aria-pressed="true"],
+.slot[aria-pressed="true"]{ background-color:var(--ink); border-color:var(--ink); color:#fff; }
+
+/* viewer controls sit on black */
+.vbtn{ background-color:transparent; border:1.6px solid #3A3735; color:#C9C3BA; line-height:2.19em; min-width:2.5em; }
+.vbtn:hover{ background-color:#fff; border-color:#fff; color:#141312; box-shadow:none; }
+
+/* compact utility buttons keep the language, just smaller */
+.a-btn-sm{ font-size:.8em; padding:0 .9em; line-height:2.1em; min-height:2.2em; }
+.chip{ font-size:.78em; padding:0 .85em; line-height:2.1em; min-height:2.2em; letter-spacing:.04em; text-transform:none; }
+.chip .x{ font-size:1.1em; line-height:1; margin-left:.4em; }
+.news button{ font-size:.8em; padding:0 1em; }
+
+/* the search/sort selects should not read as buttons */
+.sortsel,.a-sel{ text-transform:none; letter-spacing:normal; font-weight:400; }
+
+/* text links must not inherit button styling */
+.link,.link-plain,.msg-row a,.foot-map a,.dropdown a,.nav a,.navitem>a{
+  background:none; border-radius:0; min-height:0; line-height:inherit; box-shadow:none;
+}
+.link:hover,.link-plain:hover,.msg-row a:hover,.foot-map a:hover,.dropdown a:hover{ box-shadow:none; }
+.navitem>a,.navitem>button{
+  background:transparent; border:0; min-height:0; padding:34px 0; line-height:normal;
+}
+.navitem>a:hover,.navitem>button:hover{ background:transparent; box-shadow:none; }
+.burger{ line-height:2.19em; min-height:2.5em; }
+</style>
 
 <script>"use strict";route();</script>
