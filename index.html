@@ -5,7 +5,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23171412'/%3E%3Cg fill='none' stroke='%23B08D57' stroke-width='1.1' stroke-linejoin='round'%3E%3Cpath d='M6 12.5 L16 5 L26 12.5 L16 27 Z'/%3E%3Cpath d='M6 12.5 H26'/%3E%3Cpath d='M11 12.5 L16 5 L21 12.5 L16 27 Z'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Dancing+Script:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* ============================================================
    SP GEMS — demonstration build
@@ -1037,8 +1037,8 @@ function viewHome(){
         '<p class="t-lg num">'+exc.carat.toFixed(2)+' ct &middot; '+esc(exc.shape)+' &middot; '+esc(exc.origin)+'</p>'+
         '<p class="price-v">Price on Request</p>'+
         '<div class="hero-cta" style="margin-top:0">'+
-          '<button class="btn btn-primary" type="button" data-quote="'+exc.slug+'">Request a quotation</button>'+
-          '<button class="btn btn-secondary" type="button" data-appointment="'+exc.slug+'">Schedule an appointment</button>'+
+          '<a class="btn btn-primary" href="#/gemstones/'+exc.slug+'">View this stone</a>'+
+          '<a class="btn btn-secondary" href="#/gemstones?exceptional=1">Exceptional gems</a>'+
           '<a class="btn btn-secondary" href="#/gemstones?exceptional=1">View exceptional gems</a>'+
         '</div>'+
       '</div>'+
@@ -1085,7 +1085,7 @@ function viewHome(){
     '<p class="eyebrow">Private consultation</p>'+
     '<h2 style="color:var(--ivory); max-width:20ch">Speak with a specialist — by video call, or in person in Yangon.</h2>'+
     '<p class="t-lg" style="max-width:56ch">Tell us what you are looking for. We will show you what we have, and say plainly when we do not have it.</p>'+
-    '<button class="btn btn-primary" type="button" data-appointment="general" style="margin-top:8px">Schedule an appointment</button>'+
+    '<a class="btn btn-primary" href="#/contact" style="margin-top:8px">Contact us</a>'+
   '</div></section>'
   ].join("");
 }
@@ -1296,7 +1296,7 @@ function zeroState(){
     '<h3>No stone in the current catalogue matches that.</h3>'+
     '<p class="measure">Our inventory turns over constantly and a good deal of material is not yet catalogued. Tell us what you are looking for and we will come back to you when we have it — or say honestly that we do not.</p>'+
     '<div class="hero-cta" style="margin-top:0">'+relax+
-    '<button class="btn btn-primary" type="button" data-quote="sourcing">Tell us what you are seeking</button></div></div>';
+    '<a class="btn btn-primary" href="#/contact">Tell us what you are seeking</a></div></div>';
 }
 </script>
 
@@ -1357,19 +1357,18 @@ function viewGem(slug){
     '<div class="price-blk" data-prd="SDD §19.4 quotation-only">'+
       '<p class="price-v">'+esc(sold ? "Sold" : priceLabel(g))+'</p>'+
       '<p class="'+availCls+'">'+availTxt+'</p>'+
-      (!sold ? '<p class="t-sm" style="color:var(--ink-meta)">Priced per stone against a live market. We quote in writing, usually same day.</p>' : "")+
+      (!sold ? '<p class="t-sm" style="color:var(--ink-meta)">Shown for reference. Stones are seen in person or by appointment, never sold through this site.</p>' : "")+
     '</div>';
 
   if(sold){
     rail += '<div class="cta-blk" data-prd="FR-GEM-064 sold state">'+
       '<p class="measure">This stone was sold in 2023. Its record stays here permanently.</p>'+
       '<div class="cta-pair">'+
-        '<button class="btn btn-primary btn-full" type="button" data-quote="sourcing">Tell us what you are seeking</button>'+
-        '<button class="btn btn-secondary btn-full" type="button" data-appointment="general">Schedule an appointment</button>'+
+        '<a class="btn btn-primary btn-full" href="#/contact">Tell us what you are seeking</a>'+
       '</div>'+
     '</div>';
   } else {
-    rail += '<div class="cta-blk" data-prd="SDD §19.4 · two CTAs, no checkout">'+
+    rail += '<div class="cta-blk" data-prd="SDD §19.4 · viewing only, no purchase path">'+
       '<div class="cta-pair">'+
         '<button class="btn btn-primary btn-full" type="button" data-quote="'+g.slug+'">Request a quotation</button>'+
         '<button class="btn btn-secondary btn-full" type="button" data-appointment="'+g.slug+'">Schedule an appointment</button>'+
@@ -1443,7 +1442,7 @@ function viewGem(slug){
         '<p class="t-sm" style="color:var(--ink-secondary)">Issued '+esc(g.certDate)+'. States species, origin and treatment.</p>'+
         '<p class="measure">The full report is released on enquiry, or immediately to a verified trade account. The report number above can be checked directly with the laboratory.</p>'+
         '<div class="msg-row" style="gap:var(--s3)">'+
-          '<button class="btn btn-secondary" type="button" data-quote="'+g.slug+'">Request the full certificate</button>'+
+          '<a class="btn btn-secondary" href="#/contact">Request the full certificate</a>'+
           '<a href="#" data-toast="Opens the laboratory&rsquo;s public report-verification tool in a new tab.">Verify with '+esc(g.lab)+'</a>'+
         '</div>'+
       '</div></div>';
@@ -1464,7 +1463,7 @@ function viewGem(slug){
   /* consultation band */
   below += '<div class="band band-dark band-tight" data-prd="§13.2.13"><div class="wrap-text" style="text-align:center; display:flex; flex-direction:column; align-items:center; gap:var(--s3)">'+
     '<h3 style="color:var(--ivory); max-width:24ch">Would you like to see this stone in person, or by video call?</h3>'+
-    '<button class="btn btn-primary" type="button" data-appointment="'+g.slug+'">Schedule a viewing</button></div></div>';
+    '<a class="btn btn-primary" href="#/contact">Arrange a viewing</a></div></div>';
 
   /* related */
   below += '<div class="band band-ivory"><div class="wrap"><div class="sec-head"><div class="stack">'+
@@ -3270,8 +3269,7 @@ function mountChrome(){
     '<a class="brand" href="#/" aria-label="SP Gems — home"><img class="brand-logo" src="'+LOGO_SRC+'" alt="SP Gems"></a>'+
     '<nav class="nav" aria-label="Primary">'+navHTML()+'</nav>'+
     '<div class="hdr-cta">'+
-      '<button class="btn btn-secondary" type="button" data-appointment="general">Schedule an Appointment</button>'+
-      '<button class="btn btn-primary" type="button" data-quote="general">Request a Quotation</button>'+
+      '<a class="btn btn-primary" href="#/contact">Enquire</a>'+
     '</div>'+
     '<button class="burger" type="button" aria-expanded="false" aria-controls="mobmenu">Menu</button>';
 
@@ -3288,8 +3286,7 @@ function mountChrome(){
         '<a href="#/gemstones">Gemstones</a><a href="#/jewellery">Jewellery</a></div>'+
     '</nav>'+
     '<div class="mobmenu-cta">'+
-      '<button class="btn btn-primary" type="button" data-quote="general">Request a Quotation</button>'+
-      '<button class="btn btn-secondary" type="button" data-appointment="general">Schedule an Appointment</button>'+
+      '<a class="btn btn-primary" href="#/contact">Enquire</a>'+
     '</div>';
 
   /* minimal footer — SDD §19.6: brand mark, slim sitemap, copyright. No
@@ -3406,8 +3403,7 @@ function ctaBand(line){
   return '<section class="band band-dark band-tight"><div class="wrap-text" style="text-align:center; display:flex; flex-direction:column; align-items:center; gap:var(--s3)">'+
     '<h3 style="color:var(--ivory); max-width:26ch">'+esc(line)+'</h3>'+
     '<div class="hero-cta" style="justify-content:center">'+
-      '<button class="btn btn-primary" type="button" data-quote="general">Request a quotation</button>'+
-      '<button class="btn btn-secondary" type="button" data-appointment="general">Schedule an appointment</button>'+
+      '<a class="btn btn-primary" href="#/contact">Enquire</a>'+
     '</div></div></section>';
 }
 
@@ -3537,8 +3533,7 @@ function pgContact(){
       '<div class="stack g2"><p class="eyebrow">Rather talk?</p><h3>Two ways to reach us.</h3>'+
       '<p class="measure">Every stone and every piece can be quoted on request. If you would prefer to see material rather than read about it, book a call or come to the Yangon office.</p></div>'+
       '<div class="cta-pair" style="max-width:340px">'+
-        '<button class="btn btn-primary" type="button" data-quote="general">Request a quotation</button>'+
-        '<button class="btn btn-secondary" type="button" data-appointment="general">Schedule an appointment</button>'+
+        '<a class="btn btn-primary" href="mailto:spgems.myanmar@gmail.com">Email us</a>'+
       '</div>'+
       '<div style="margin-top:var(--s3)">'+img("assets/img/page-banner.jpg","SP Gems, Yangon","3/2")+'</div>'+
     '</div>'+
@@ -3914,3 +3909,315 @@ mountChrome();
 route();
 </script>
 
+
+<style>
+/* ============================================================
+   RESTYLE — matched to the live site at spgems-myanmar.com
+   Measured from the running site, not guessed:
+     body   Lato 16px/1.6, colour #777777
+     head   Lato 700 UPPERCASE, letter-spacing ~1.9px
+     accent "Dancing Script"  (theme's .alt-font)
+     primary #333333 · dark bands #000 with the monogram tile
+     header transparent over the hero, white nav, gold logo left
+   ============================================================ */
+:root{
+  --ink:#333333;
+  --ink-secondary:#555555;
+  --ink-meta:#777777;
+  --ink-tertiary:#999999;
+  --ivory:#FFFFFF;
+  --ivory-deep:#F5F5F5;
+  --charcoal:#000000;
+  --charcoal-deep:#000000;
+  --stone:#8A8A8A;
+  --rule:#DDDDDD;
+  --rule-dark:#2A2A2A;
+  --gold:#C9A961;
+  --gold-text:#8A6F2E;
+  --ruby:#8C1D2A;
+
+  --f-display:"Lato",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --f-body:"Lato",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --f-script:"Dancing Script","Lato",cursive;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+body{
+  background:#FFFFFF; color:var(--ink-meta);
+  font-family:var(--f-body); font-size:16px; line-height:1.6; font-weight:400;
+}
+
+/* ---- headings: Lato 700, uppercase, tracked (site-measured) ---- */
+.t-display,h1,.t-h1,h2,.t-h2,h3,.t-h3,h4,.t-h4{
+  font-family:var(--f-body); font-weight:700; color:var(--ink);
+  text-transform:uppercase; letter-spacing:.12em; line-height:1.3;
+}
+.t-display{font-size:38px} h1,.t-h1{font-size:30px} h2,.t-h2{font-size:25px}
+h3,.t-h3{font-size:20px} h4,.t-h4{font-size:17px; letter-spacing:.10em}
+.t-lg{font-size:17px; line-height:1.7}
+p{color:var(--ink-meta)}
+.eyebrow{
+  font-family:var(--f-script); font-size:24px; font-weight:400;
+  letter-spacing:.01em; text-transform:none; color:var(--gold-text); line-height:1.2;
+}
+.band-dark .eyebrow,.hero .eyebrow{color:var(--gold)}
+.script{font-family:var(--f-script); text-transform:none; letter-spacing:0}
+
+/* ---- header: transparent over the hero, solid black once scrolled ---- */
+.hdr{
+  position:fixed; top:0; left:0; right:0; z-index:60;
+  background:transparent; border-bottom:1px solid rgba(255,255,255,.14);
+  transition:background 300ms ease, border-color 300ms ease;
+}
+.hdr.solid{background:#000000; border-bottom-color:#222}
+.hdr-in{height:90px; gap:var(--s4)}
+.brand-logo{height:62px}
+.nav{gap:26px}
+.navitem>a,.navitem>button{
+  font-family:var(--f-body); font-size:13px; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase; color:rgba(255,255,255,.82); padding:34px 0;
+}
+.navitem>a:hover,.navitem>button:hover,.navitem.on>a,.navitem.on>button,
+.navitem>a[aria-current="page"]{color:#FFFFFF}
+.navitem>a::after,.navitem>button::after{background:var(--gold)}
+.navitem>button .caret{color:rgba(255,255,255,.55)}
+.burger{border-color:rgba(255,255,255,.4); color:#fff}
+.hdr.solid .burger{border-color:#3a3a3a}
+/* inner pages have no hero photo, so the bar needs a ground from the start */
+body.nohero .hdr{background:#000000; border-bottom-color:#222}
+body:not(.admin) main{padding-top:0}
+body.nohero main{padding-top:90px}
+
+.dropdown{
+  background:#000000; border:1px solid #222; border-top:0;
+  box-shadow:0 18px 44px rgba(0,0,0,.5);
+}
+.dropdown a:hover{background:#141414}
+.dropdown a b{font-family:var(--f-body); font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:#fff}
+.dropdown a span{color:#8d8d8d}
+
+/* ---- hero: full-bleed photographic carousel with dot pagination ---- */
+.hero{height:88vh; max-height:820px; min-height:460px; background:#000; align-items:center}
+.hero-slide{position:absolute; inset:0; opacity:0; transition:opacity 900ms ease}
+.hero-slide.on{opacity:1}
+.hero-slide img{width:100%; height:100%; object-fit:cover; display:block}
+.hero-scrim{background:linear-gradient(to right,rgba(0,0,0,.55) 0%,rgba(0,0,0,.22) 55%,rgba(0,0,0,.05) 100%)}
+.hero-in{padding-bottom:0}
+.hero h1{font-size:34px; letter-spacing:.14em; color:#fff; max-width:20ch}
+.hero .script-line{
+  font-family:var(--f-script); font-size:38px; color:#fff; line-height:1.2;
+  text-transform:none; letter-spacing:0; margin-bottom:6px;
+}
+.hero p{color:rgba(255,255,255,.85)}
+.hero-dots{
+  position:absolute; left:0; right:0; bottom:26px; z-index:3;
+  display:flex; gap:11px; justify-content:center;
+}
+.hero-dots button{
+  width:11px; height:11px; border-radius:50%; border:0; padding:0; cursor:pointer;
+  background:rgba(255,255,255,.45); transition:background 220ms ease;
+}
+.hero-dots button[aria-current="true"]{background:#fff}
+
+/* ---- section rhythm: white, then black with the monogram tile ---- */
+.band-ivory{background:#FFFFFF}
+.band-ivory-deep{background:#F5F5F5}
+.band-dark{
+  background-color:#000000;
+  background-image:url("assets/img/monogram.png");
+  background-repeat:repeat; color:#DDDDDD;
+}
+.band-dark h1,.band-dark h2,.band-dark h3,.band-dark h4{color:#FFFFFF}
+.band-dark p{color:#AFAFAF}
+.band-dark .rule{background:#2A2A2A}
+
+/* ---- buttons: squared, uppercase, Lato 700 ---- */
+.btn{
+  border-radius:0; font-family:var(--f-body); font-size:12px; font-weight:700;
+  letter-spacing:.13em; padding:14px 30px;
+}
+.btn-primary{background:var(--ink); border-color:var(--ink); color:#fff}
+.btn-primary:hover{background:#000; border-color:#000}
+.btn-secondary{border-color:var(--ink); color:var(--ink)}
+.btn-secondary:hover{background:var(--ink); color:#fff}
+.hero-cta .btn-primary,.band-dark .btn-primary{background:var(--gold); border-color:var(--gold); color:#1a1a1a}
+.hero-cta .btn-primary:hover,.band-dark .btn-primary:hover{background:#d9bd7d; border-color:#d9bd7d}
+.hero-cta .btn-secondary{border-color:rgba(255,255,255,.6); color:#fff}
+.hero-cta .btn-secondary:hover{background:#fff; color:var(--ink); border-color:#fff}
+.link{font-size:12px; font-weight:700; letter-spacing:.13em; border-bottom-color:var(--rule)}
+.link:hover{border-bottom-color:var(--gold)}
+.band-dark .link{color:#fff}
+
+/* ---- cards / badges ---- */
+.badge{border-radius:0; font-weight:700; letter-spacing:.09em; font-size:10px; border-color:var(--rule)}
+.badge-strong{border-color:var(--ink); color:var(--ink)}
+.badge-exc{border-color:var(--gold); color:var(--gold-text)}
+.card-type{font-size:11px; font-weight:700; letter-spacing:.13em; color:var(--ink-meta)}
+.card-carat{font-family:var(--f-body); font-weight:700; font-size:18px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink)}
+.card-price{font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-tertiary)}
+
+/* ---- forms / spec tables ---- */
+.spec-k,.crow dt,.fld label,.a-f label{font-family:var(--f-body); font-weight:700; letter-spacing:.09em}
+.price-v{font-family:var(--f-body); font-weight:700; font-size:20px; text-transform:uppercase; letter-spacing:.1em}
+.pullq{font-family:var(--f-script); font-size:30px; text-transform:none; letter-spacing:0; color:var(--ink); border-left-color:var(--gold)}
+.fact .n{font-family:var(--f-body); font-weight:900; font-size:34px; letter-spacing:.02em; color:var(--ink)}
+.treat{border-color:var(--ink); background:#F5F5F5}
+.brand-n{font-family:var(--f-body); font-weight:700; letter-spacing:.14em}
+
+/* ---- footer: black, one uppercase row, copyright ---- */
+.foot-min{background:#000000; background-image:url("assets/img/monogram.png"); background-repeat:repeat; padding:var(--s6) 0 var(--s4)}
+.foot-map{border-color:#222}
+.foot-map a{font-size:12px; font-weight:700; letter-spacing:.12em; color:#CFCFCF}
+.foot-map a:hover{color:var(--gold)}
+.foot-cr{color:#8A8A8A; font-size:12.5px}
+
+/* ---- mobile menu ---- */
+.mobmenu{background:#000}
+.mobmenu-top{border-bottom-color:#222}
+.mobmenu-x{border-color:#3a3a3a; color:#fff}
+.mobmenu nav>a,.mobmenu-grp a{
+  font-family:var(--f-body); font-weight:700; text-transform:uppercase;
+  letter-spacing:.1em; font-size:15px; color:#fff; border-bottom-color:#1e1e1e;
+}
+.mobmenu-grp>b{color:var(--gold); font-family:var(--f-body)}
+.mobmenu-cta{border-top-color:#222}
+
+/* ---- "viewing only" notice ---- */
+.viewonly{
+  border:1px solid var(--rule); background:#F5F5F5; padding:14px 18px;
+  font-size:13px; line-height:1.6; color:var(--ink-secondary);
+}
+.viewonly b{display:block; font-weight:700; text-transform:uppercase; letter-spacing:.1em; font-size:11px; color:var(--ink); margin-bottom:4px}
+
+@media (max-width:1180px){
+  .hdr{background:#000}
+  body:not(.admin) main{padding-top:90px}
+}
+@media (max-width:820px){
+  .t-display{font-size:26px} h1,.t-h1{font-size:22px} h2,.t-h2{font-size:19px} h3,.t-h3{font-size:17px}
+  .hero h1{font-size:22px} .hero .script-line{font-size:26px}
+  .hero{height:70vh}
+  .eyebrow{font-size:20px}
+}
+</style>
+
+<script>
+"use strict";
+/* ==========================================================================
+   Restyle behaviour: hero carousel, scroll-solid header, no-purchase catalogue.
+   ========================================================================== */
+
+/* --- hero: photographic carousel, matching the live site's 6-slide rotator --- */
+var HERO_SLIDES = [
+  { img:"assets/img/hero-7.jpg", script:"Colorful Lifestyle ... Colorful Dream ...", line:"Let’s enjoy our lives ..." },
+  { img:"assets/img/hero-4.jpg", script:"From our own workings in Mogok", line:"Natural Myanmar gemstones" },
+  { img:"assets/img/hero-9.jpg", script:"Mined, cut and set by one house", line:"Since 1985" },
+  { img:"assets/img/hero-6.jpg", script:"Rubyland", line:"The Mogok valley" },
+  { img:"assets/img/hero-5.jpg", script:"Origin, treatment, laboratory report", line:"Every stone documented" },
+  { img:"assets/img/hero-8.jpg", script:"The Value", line:"Our jewellery collection" }
+];
+var heroI = 0, heroTimer = null;
+
+function heroHTML(){
+  return '<section class="hero" data-prd="Live-site hero carousel">'+
+    HERO_SLIDES.map(function(s,i){
+      return '<div class="hero-slide'+(i===0?" on":"")+'" data-slide="'+i+'">'+
+        '<img src="'+s.img+'" alt="'+esc(s.line)+'"'+(i?' loading="lazy"':'')+'></div>';
+    }).join("")+
+    '<div class="hero-scrim"></div>'+
+    '<div class="hero-in stack g2">'+
+      '<p class="script-line" id="heroScript">'+esc(HERO_SLIDES[0].script)+'</p>'+
+      '<h1 id="heroLine">'+esc(HERO_SLIDES[0].line)+'</h1>'+
+      '<div class="hero-cta">'+
+        '<a class="btn btn-primary" href="#/gemstones">View the collection</a>'+
+        '<a class="btn btn-secondary" href="#/about/our-story">Our story</a>'+
+      '</div>'+
+    '</div>'+
+    '<div class="hero-dots" role="tablist" aria-label="Hero slides">'+
+      HERO_SLIDES.map(function(s,i){
+        return '<button type="button" data-herodot="'+i+'" aria-current="'+(i===0)+'" aria-label="Slide '+(i+1)+'"></button>';
+      }).join("")+
+    '</div>'+
+  '</section>';
+}
+function heroGo(i){
+  var slides = $$(".hero-slide"); if(!slides.length) return;
+  heroI = (i + HERO_SLIDES.length) % HERO_SLIDES.length;
+  slides.forEach(function(el,n){ el.classList.toggle("on", n===heroI); });
+  $$("[data-herodot]").forEach(function(b,n){ b.setAttribute("aria-current", n===heroI); });
+  var s = $("#heroScript"), l = $("#heroLine");
+  if(s) s.textContent = HERO_SLIDES[heroI].script;
+  if(l) l.textContent = HERO_SLIDES[heroI].line;
+}
+function heroStart(){
+  clearInterval(heroTimer);
+  if(!$(".hero")) return;
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  heroTimer = setInterval(function(){ heroGo(heroI+1); }, 6000);
+}
+document.addEventListener("click", function(e){
+  var d = e.target.closest && e.target.closest("[data-herodot]");
+  if(d){ heroGo(+d.getAttribute("data-herodot")); heroStart(); }
+});
+
+/* --- header goes solid once past the hero --- */
+function syncHeader(){
+  var h = $(".hdr"); if(!h) return;
+  var hero = $(".hero");
+  if(!hero){ h.classList.add("solid"); return; }
+  h.classList.toggle("solid", window.scrollY > hero.offsetHeight - 120);
+}
+window.addEventListener("scroll", syncHeader, {passive:true});
+
+/* --- swap the homepage hero for the carousel, and mark hero-less pages --- */
+var _viewHome = viewHome;
+viewHome = function(){
+  var html = _viewHome();
+  // replace the original hero section with the photographic carousel
+  html = html.replace(/<section class="hero"[\s\S]*?<\/section>/, heroHTML());
+  return html;
+};
+
+var _route = route;
+route = function(keepScroll){
+  _route(keepScroll);
+  var onHome = !location.hash.replace(/^#\/?/,"").split("?")[0];
+  document.body.classList.toggle("nohero", !onHome && !document.body.classList.contains("admin"));
+  if(onHome){ heroI = 0; heroStart(); } else { clearInterval(heroTimer); }
+  syncHeader();
+};
+
+/* ==========================================================================
+   No purchasing. Items are fully viewable; nothing on the site can transact.
+   ========================================================================== */
+var VIEW_ONLY = '<div class="viewonly"><b>Viewing only</b>'+
+  'Stones and pieces are shown here for reference. Nothing on this site can be bought online — '+
+  'we sell in person and by appointment, and every piece is discussed before it changes hands.</div>';
+
+/* strip the quotation/appointment pair from the detail rail, leave an enquiry link */
+var _viewGem = viewGem;
+viewGem = function(slug){
+  var html = _viewGem(slug);
+  html = html.replace(
+    /<div class="cta-pair">[\s\S]*?<\/div>/,
+    '<div class="cta-pair">'+
+      '<a class="btn btn-primary btn-full" href="#/contact">Enquire about this stone</a>'+
+    '</div>'
+  );
+  html = html.replace(/Request a quotation/g, "Enquire");
+  html = html.replace(/Schedule an appointment/g, "Arrange a viewing");
+  html = html.replace(/Price on request/g, "Not sold online");
+  // notice under the rail
+  html = html.replace('<div class="msg-row">', VIEW_ONLY + '<div class="msg-row">');
+  return html;
+};
+
+/* the catalogue keeps every filter and every record — only the commerce goes */
+var _viewCatalogue = viewCatalogue;
+viewCatalogue = function(){
+  var html = _viewCatalogue();
+  html = html.replace('<div class="cat-bar">', '<div style="margin-bottom:var(--s3)">'+VIEW_ONLY+'</div><div class="cat-bar">');
+  return html;
+};
+</script>
+
+<script>"use strict";route();</script>
