@@ -1518,9 +1518,8 @@ function route(keepScroll){
   else if(STUBS[parts[0]]){ var s=STUBS[parts[0]]; app.innerHTML = viewStub(s[0],s[1],s[2]); demoKey=parts[0]; }
   else { app.innerHTML = viewStub("Page not found","404","That address is not part of this demonstration build."); }
 
-  var navk = parts.length ? (PAGES[pageKey] ? "about" : parts[0]) : "home";
-  if(pageKey==="news") navk="news";
-  if(pageKey==="contact") navk="contact";
+  var navk = parts.length ? pageKey : "home";
+  if(parts[0]==="gemstones") navk="gemstones";
   $$("[data-nav]").forEach(function(a){
     if(a.getAttribute("data-nav")===navk) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
   });
@@ -3215,21 +3214,15 @@ var LOGO_SRC = "assets/img/logo.png";
    Mirrors the Payload global exactly, so re-grouping the nav later is a CMS
    edit rather than a front-end rebuild. Editable in the CMS demo. */
 var NAV_MENU = [
-  { label:"Home", route:"#/", children:[] },
-  { label:"About", route:"", children:[
-    { label:"Our Story",            route:"#/about/our-story",            description:"Mogok, the family, and forty years of trading." },
-    { label:"The Value",            route:"#/about/the-value",            description:"Our design-led jewellery collection." },
-    { label:"Mining Works",         route:"#/about/mining-works",         description:"Our own workings in the Mogok valley." },
-    { label:"Milestones",           route:"#/about/milestones",           description:"What the house has done, year by year." },
-    { label:"CSR",                  route:"#/about/csr",                  description:"Our work in the communities we mine in." },
-    { label:"Responsible Sourcing", route:"#/about/responsible-sourcing", description:"What we can document, and what we cannot." }
-  ]},
-  { label:"Collection", route:"", children:[
-    { label:"Gemstones",  route:"#/gemstones", description:"Individually catalogued loose stones." },
-    { label:"Jewellery",  route:"#/jewellery", description:"Finished pieces and commissions." }
-  ]},
-  { label:"News & Events", route:"#/news", children:[] },
-  { label:"Contact", route:"#/contact", children:[] }
+  { label:"Home",          route:"#/",                           children:[] },
+  { label:"About",         route:"#/about/our-story",            children:[] },
+  { label:"The Value",     route:"#/about/the-value",            children:[] },
+  { label:"Gemstones",     route:"#/gemstones",                  children:[] },
+  { label:"Mining Works",  route:"#/about/mining-works",         children:[] },
+  { label:"Milestones",    route:"#/about/milestones",           children:[] },
+  { label:"CSR",           route:"#/about/csr",                  children:[] },
+  { label:"News & Events", route:"#/news",                       children:[] },
+  { label:"Contact",       route:"#/contact",                    children:[] }
 ];
 
 /* --- SiteSettings global (SDD §19.5) — confirmed seed values -------------- */
@@ -3260,7 +3253,7 @@ function navHTML(){
       }).join("")+'</div></div>';
   }).join("");
 }
-function navKey(route){ var m=String(route).match(/#\/([^/?]*)/); return m?(m[1]||"home"):"home"; }
+function navKey(route){ var p=String(route).replace(/^#\/?/,"").split("?")[0]; return p||"home"; }
 
 function mountChrome(){
   var hdr = document.querySelector(".hdr-in");
@@ -3282,8 +3275,9 @@ function mountChrome(){
       return '<div class="mobmenu-grp"><b>'+esc(n.label)+'</b>'+n.children.map(function(c){
         return '<a href="'+c.route+'">'+esc(c.label)+'</a>'; }).join("")+'</div>';
     }).join("")+
-      '<div class="mobmenu-grp"><b>Collection</b>'+
-        '<a href="#/gemstones">Gemstones</a><a href="#/jewellery">Jewellery</a></div>'+
+      '<div class="mobmenu-grp"><b>More</b>'+
+        '<a href="#/about/responsible-sourcing">Responsible Sourcing</a>'+
+        '<a href="#/jewellery">Jewellery</a></div>'+
     '</nav>'+
     '<div class="mobmenu-cta">'+
       '<a class="btn btn-primary" href="#/contact">Enquire</a>'+
@@ -4377,6 +4371,35 @@ viewCatalogue = function(){
 }
 .navitem>a:hover,.navitem>button:hover{ background:transparent; box-shadow:none; }
 .burger{ line-height:2.19em; min-height:2.5em; }
+</style>
+
+<style>
+/* ============================================================
+   PRIMARY NAV — measured from spgems-myanmar.com
+     ul.nav-uppercase, flex, align-items center
+     li  margin-right 7px  (14px between adjacent links)
+     a   padding 10px 0 · Lato 700 · 12.8px · ls .256px · UPPERCASE
+     colour rgba(255,255,255,.8), current/hover #FFFFFF
+     Flat: the live site has no dropdowns at all.
+   ============================================================ */
+.nav{display:flex; align-items:center; gap:0; margin-left:auto}
+.navitem{margin:0 14px 0 0}
+.navitem:last-child{margin-right:0}
+.navitem>a{
+  display:inline-flex; align-items:center; flex-wrap:wrap;
+  padding:10px 0; font-family:var(--f-body); font-size:12.8px; font-weight:700;
+  letter-spacing:.256px; text-transform:uppercase; line-height:1.6;
+  color:rgba(255,255,255,.8); text-decoration:none; border:0; background:none;
+  transition:color .2s;
+}
+.navitem>a:hover,
+.navitem>a[aria-current="page"]{color:#FFFFFF}
+/* no dropdown panels on this site */
+.navitem>a::after,.navitem>button::after{display:none}
+.dropdown{display:none !important}
+.hdr.solid .navitem>a{color:rgba(255,255,255,.8)}
+.hdr.solid .navitem>a:hover,.hdr.solid .navitem>a[aria-current="page"]{color:#fff}
+@media (max-width:1240px){ .nav{display:none} .burger{display:block; margin-left:auto} }
 </style>
 
 <script>"use strict";route();</script>
