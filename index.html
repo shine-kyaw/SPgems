@@ -13,6 +13,7 @@
 <meta name="theme-color" content="#000000">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://spgems-myanmar.com/">
+<link rel="preload" as="image" href="assets/img/hero-7.webp" type="image/webp" fetchpriority="high">
 </head>
 <body>
 
@@ -821,7 +822,9 @@ function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").rep
 .plate-alt{position:absolute; inset:0; opacity:0; transition:opacity 400ms var(--ease-in)}
 .card:hover .plate-alt{opacity:1}
 .im{position:relative; overflow:hidden; background:var(--stone)}
-.im>img{width:100%; height:100%; object-fit:cover; display:block}
+.im>img,.im>picture{width:100%; height:100%; display:block}
+.im>picture>img{width:100%; height:100%; object-fit:cover; display:block}
+.im>img{object-fit:cover}
 .im>figcaption{position:absolute; left:0; right:0; bottom:0; padding:8px 10px;
   background:linear-gradient(to top,rgba(20,19,18,.72),transparent);
   font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#EDE8E0}
@@ -856,9 +859,26 @@ function plateHover(g){
     '<div class="plate-alt">'+gemSVG(g,1)+'</div>'+
     '<span class="plate-note">'+VIEWS[0].k+'</span><span class="plate-mark">SP Gems</span></div>';
 }
-function img(src, alt, ratio){
-  return '<div class="im" style="aspect-ratio:'+(ratio||"4/3")+'">'+
-    '<img src="'+src+'" alt="'+esc(alt)+'" loading="lazy"></div>';
+/* Intrinsic dimensions per asset (§20: stop layout shift) and a WebP
+   source where one is smaller than the original (§21). */
+var IMG_DIMS = {"csr-1.jpg":[792,504],"csr-2.jpg":[504,792],"csr-3.jpg":[504,792],"csr-4.jpg":[504,792],"csr-5.jpg":[504,792],"csr-6.jpg":[504,792],"csr-7.jpg":[504,792],"csr-8.jpg":[504,792],"csr-9.jpg":[792,504],"csr-a.jpg":[792,504],"csr-b.jpg":[792,504],"feature-1.jpg":[1000,667],"feature-2.jpg":[510,400],"feature-3.jpg":[510,400],"feature-4.jpg":[150,150],"feature-5.jpg":[510,400],"feature-6.jpg":[247,300],"feature-7.jpg":[150,150],"hero-1.jpg":[1024,320],"hero-2.jpg":[1024,320],"hero-3.jpg":[1024,320],"hero-4.jpg":[1024,341],"hero-5.jpg":[1024,341],"hero-6.jpg":[1024,341],"hero-7.jpg":[1024,341],"hero-8.jpg":[1024,341],"hero-9.jpg":[1024,341],"logo.png":[108,129],"milestone-1.jpg":[792,504],"mining-1.jpg":[500,335],"mining-2.jpg":[500,335],"mining-3.jpg":[500,335],"mining-4.jpg":[500,335],"mining-5.jpg":[500,335],"mining-6.jpg":[500,335],"mining-7.jpg":[500,335],"mining-8.jpg":[500,335],"mining-8b.jpg":[500,335],"monogram.png":[81,100],"news-1.jpg":[1000,1000],"news-2.jpg":[1000,1000],"news-3.jpg":[1000,750],"page-banner.jpg":[1352,301],"value-1.jpg":[500,335],"value-2.jpg":[500,335],"value-3.jpg":[500,335],"value-4.jpg":[500,335],"value-5.jpg":[500,335],"value-6.jpg":[500,335],"value-7.jpg":[500,335],"value-8.jpg":[500,335]};
+var IMG_WEBP = {"csr-1.webp":1,"csr-2.webp":1,"csr-3.webp":1,"csr-4.webp":1,"csr-5.webp":1,"csr-7.webp":1,"csr-8.webp":1,"csr-9.webp":1,"csr-a.webp":1,"csr-b.webp":1,"feature-1.webp":1,"feature-2.webp":1,"feature-3.webp":1,"feature-4.webp":1,"feature-5.webp":1,"feature-6.webp":1,"feature-7.webp":1,"hero-1.webp":1,"hero-2.webp":1,"hero-3.webp":1,"hero-4.webp":1,"hero-5.webp":1,"hero-6.webp":1,"hero-7.webp":1,"hero-8.webp":1,"hero-9.webp":1,"logo.webp":1,"milestone-1.webp":1,"mining-2.webp":1,"monogram.webp":1,"news-1.webp":1,"news-2.webp":1,"news-3.webp":1,"page-banner.webp":1,"value-1.webp":1,"value-2.webp":1,"value-3.webp":1,"value-4.webp":1,"value-5.webp":1,"value-6.webp":1,"value-7.webp":1,"value-8.webp":1};
+function img(src, alt, ratio, opts){
+  opts = opts || {};
+  var file = String(src).split("/").pop();
+  var d = IMG_DIMS[file];
+  var webp = IMG_WEBP[file.replace(/\.(jpe?g|png)$/i, ".webp")]
+           ? String(src).replace(/\.(jpe?g|png)$/i, ".webp") : null;
+  var sizeAttrs = d ? ' width="'+d[0]+'" height="'+d[1]+'"' : '';
+  var eager = opts.priority;
+  var loadAttrs = eager
+    ? ' loading="eager" fetchpriority="high" decoding="sync"'
+    : ' loading="lazy" decoding="async"';
+  var tag = '<img src="'+src+'" alt="'+esc(alt)+'"'+sizeAttrs+loadAttrs+'>';
+  var inner = webp
+    ? '<picture><source type="image/webp" srcset="'+webp+'">'+tag+'</picture>'
+    : tag;
+  return '<div class="im" style="aspect-ratio:'+(ratio||"4/3")+'">'+inner+'</div>';
 }
 function imgs(list, ratio){ return list.map(function(x){ return img(x[0],x[1],ratio); }).join(""); }
 function ph(label, ratio, light){
@@ -4056,8 +4076,14 @@ var heroI = 0, heroTimer = null;
 function heroHTML(){
   return '<section class="hero" data-prd="Live-site hero carousel">'+
     HERO_SLIDES.map(function(s,i){
+      var d = IMG_DIMS[String(s.img).split("/").pop()];
+      var sz = d ? ' width="'+d[0]+'" height="'+d[1]+'"' : '';
+      var wp = IMG_WEBP[String(s.img).split("/").pop().replace(/\.(jpe?g|png)$/i,".webp")]
+             ? String(s.img).replace(/\.(jpe?g|png)$/i,".webp") : null;
+      var im = '<img src="'+s.img+'" alt="'+esc(s.line)+'"'+sz+
+        (i ? ' loading="lazy" decoding="async"' : ' loading="eager" fetchpriority="high" decoding="sync"')+'>';
       return '<div class="hero-slide'+(i===0?" on":"")+'" data-slide="'+i+'">'+
-        '<img src="'+s.img+'" alt="'+esc(s.line)+'"'+(i?' loading="lazy"':'')+'></div>';
+        (wp ? '<picture><source type="image/webp" srcset="'+wp+'">'+im+'</picture>' : im)+'</div>';
     }).join("")+
     '<div class="hero-scrim"></div>'+
     '<div class="hero-in stack g2">'+
