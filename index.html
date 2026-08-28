@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SP Gems Digital Gallery</title>
@@ -6,6 +9,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Dancing+Script:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<meta name="description" content="SP Gems mines, cuts and sets Myanmar gemstones from its own workings in the Mogok valley. Trading since 1985. Every stone documented: origin, treatment, laboratory report.">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://spgems-myanmar.com/">
+</head>
+<body>
+
 <style>
 /* ============================================================
    SP GEMS — demonstration build
@@ -16,7 +26,7 @@
 :root{
   --ink:#171412;
   --ink-secondary:#4A443F;
-  --ink-meta:#6B645D;      /* readable metadata — see contrast note in review */
+  --ink-meta:#5C564F;      /* AA-safe on ivory: 7.0:1 (was #6B645D) */
   --ink-tertiary:#7A736C;  /* PRD token; disabled states only */
   --ivory:#F7F4EF;
   --ivory-deep:#EFEAE2;
@@ -425,85 +435,17 @@ body.prd [data-prd]::after{display:block}
 
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="hdr" data-prd="§9.2 Nav">
-  <div class="hdr-in">
-    <a class="brand" href="#/">
-      <span class="brand-n">SP GEMS</span>
-      <span class="brand-s">Mogok &middot; Yangon</span>
-    </a>
-    <nav class="nav" aria-label="Primary">
-      <a href="#/gemstones" data-nav="gemstones">Gemstones</a>
-      <a href="#/jewellery" data-nav="jewellery">Jewellery</a>
-      <a href="#/mogok" data-nav="mogok">Mogok</a>
-      <a href="#/journal" data-nav="journal">Journal</a>
-      <a href="#/about" data-nav="about">About</a>
-      <a href="#/contact" data-nav="contact">Contact</a>
-    </nav>
-    <button class="btn btn-primary" type="button" data-enquire="general">Enquire</button>
-    <button class="burger" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
-  </div>
-</header>
+<!-- Header and footer are rendered by mountChrome() from the NAV_MENU and SITE
+     data models. These shells are intentionally empty: a second copy of the
+     markup here would never render and would drift out of sync. -->
+<header class="hdr"><div class="hdr-in"></div></header>
 
 <!-- full-screen mobile menu — SDD §19.8 -->
 <div class="mobmenu" id="mobmenu" data-open="false" role="dialog" aria-modal="true" aria-label="Menu"></div>
 
 <main id="main"></main>
 
-<footer class="foot" data-prd="§29 s12 Footer">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <span class="brand-n" style="color:var(--ivory)">SP GEMS</span>
-        <p class="t-sm" style="color:#8A847C; margin-top:14px; max-width:30ch">Gemstone mining, cutting and fine jewellery. Mogok and Yangon, Myanmar. Trading since 1985.</p>
-      </div>
-      <div>
-        <h5>Gemstones</h5>
-        <ul>
-          <li><a href="#/gemstones?type=Ruby">Ruby</a></li>
-          <li><a href="#/gemstones?type=Sapphire">Sapphire</a></li>
-          <li><a href="#/gemstones?type=Spinel">Spinel</a></li>
-          <li><a href="#/gemstones?exceptional=1">Exceptional Gems</a></li>
-          <li><a href="#/gemstones?availability=all">Archive</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>The House</h5>
-        <ul>
-          <li><a href="#/mogok">Mogok</a></li>
-          <li><a href="#/mogok">The Mines</a></li>
-          <li><a href="#/mogok">Craftsmanship</a></li>
-          <li><a href="#/mogok">Responsible Sourcing</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Buying</h5>
-        <ul>
-          <li><a href="#/about">How Buying Works</a></li>
-          <li><a href="#/about">International Purchasing</a></li>
-          <li><a href="#/contact">Arrange a Consultation</a></li>
-          <li><a href="#/contact">Trade Access</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>Contact</h5>
-        <ul>
-          <li>No. 30A, Pyay Road (7 Mile)<br>Mayangone, Yangon</li>
-          <li><a href="#/contact">enquiries@spgems&#8203;-myanmar.com</a></li>
-          <li>+95 1 660 397</li>
-        </ul>
-        <div class="news">
-          <label class="sr" for="nl">Email address for new-arrival notices</label>
-          <input id="nl" type="email" placeholder="New arrivals by email" autocomplete="email">
-          <button type="button" data-toast="Demonstration build — no email is sent.">Join</button>
-        </div>
-      </div>
-    </div>
-    <div class="foot-bot">
-      <span>&copy; <span id="yr"></span> SP Gems &amp; Jewellery. All rights reserved.</span>
-      <span>Privacy &middot; Terms &middot; Cookies &middot; Sanctions &amp; Compliance</span>
-    </div>
-  </div>
-</footer>
+<footer class="foot"></footer>
 
 <!-- enquiry modal — PRD FR-GEM-051: opens in place, pre-populated, never navigates away -->
 <div class="ov" id="modal" data-open="false" role="dialog" aria-modal="true" aria-labelledby="mtitle">
@@ -902,7 +844,7 @@ function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").rep
 var $ = function(s,r){ return (r||document).querySelector(s); };
 var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
 var app = $("#main"), live = $("#live");
-$("#yr").textContent = "2026";
+/* copyright year lives in SITE.footerCopyright, rendered by mountChrome() */
 
 /* ---------------- shared render helpers ---------------- */
 function plate(g, view, cls){
@@ -973,7 +915,7 @@ function viewHome(){
       '<p class="t-lg">We mine, we sort, we cut, and we set. Four decades in the Mogok valley, in one house.</p>'+
       '<div class="hero-cta">'+
         '<a class="btn btn-primary" href="#/gemstones">View the collection</a>'+
-        '<a class="btn btn-secondary" href="#/mogok">Our story in Mogok</a>'+
+        '<a class="btn btn-secondary" href="#/about/mining-works">Our story in Mogok</a>'+
       '</div>'+
     '</div></section>',
 
@@ -990,8 +932,8 @@ function viewHome(){
       '<p class="eyebrow">The house</p>'+
       '<h2>A family that has never left the valley.</h2>'+
       '<p class="t-lg measure">The SanPya family began trading gems in Mogok in 1985. SP Gems was formally established in 2007. We work our own ground in the valley, buy rough from miners we have known for decades, and cut every stone we sell in our own Yangon workshop.</p>'+
-      '<a class="link" href="#/mogok">Our story</a>'+
-    '</div><div class="ed-off">'+img("assets/img/feature-1.jpg","A finished SP Gems piece","4/5")+'</div></div>'+
+      '<a class="link" href="#/about/mining-works">Our story</a>'+
+    '</div><div class="ed-off">'+img("assets/img/value-6.jpg","Setting a stone at the bench, Yangon workshop","4/5")+'</div></div>'+
   '</div></section>',
 
   /* 4 — mogok */
@@ -1001,7 +943,7 @@ function viewHome(){
       '<p class="eyebrow">Mogok</p>'+
       '<h2 style="color:var(--ivory)">Rubyland.</h2>'+
       '<p class="t-lg measure">A single narrow valley in the Shan hills has produced the world&rsquo;s finest rubies for something close to a thousand years. Its marble-hosted deposits give a red no other source reproduces. We were born here.</p>'+
-      '<a class="link" href="#/mogok">Discover Mogok</a>'+
+      '<a class="link" href="#/about/mining-works">Discover Mogok</a>'+
     '</div></div>'+
   '</div></section>',
 
@@ -1009,7 +951,7 @@ function viewHome(){
   '<section class="band band-ivory" data-prd="§29 s5 Collection"><div class="wrap">'+
     '<div class="sec-head"><div class="stack"><p class="eyebrow">Collection</p><h2>The Value</h2>'+
     '<p class="t-lg measure" style="margin-top:8px">Everyday pieces designed around stones too good to sit in a safe. Led by Aung Kyaw Zin.</p></div>'+
-    '<a class="link" href="#/jewellery">Explore the collection</a></div>'+
+    '<a class="link" href="#/about/the-value">Explore the collection</a></div>'+
     '<div class="grid-gems">'+
       [['assets/img/value-1.jpg','Sapphire and diamond earrings'],['assets/img/value-2.jpg','The Value — ring'],['assets/img/value-3.jpg','The Value — pendant']].map(function(t){
         return '<div class="jw">'+img(t[0],t[1],"4/5")+'<div class="card-t"><span class="card-type">The Value</span><span class="card-carat" style="font-size:20px">'+t[1]+'</span></div></div>';
@@ -1023,7 +965,7 @@ function viewHome(){
       '<p class="eyebrow">Craftsmanship</p>'+
       '<h2>Rough to finished, under one roof.</h2>'+
       '<p class="t-lg measure">Most houses buy stones already cut. We take our own rough to the wheel, which means the cutting plan serves the colour rather than the carat weight. It is the reason our stones face up the way they do.</p>'+
-      '<a class="link" href="#/mogok">Our craft</a>'+
+      '<a class="link" href="#/about/mining-works">Our craft</a>'+
     '</div><div>'+img("assets/img/mining-7.jpg","Working the ground at Mogok","16/10")+'</div></div>'+
   '</div></section>',
 
@@ -1052,7 +994,7 @@ function viewHome(){
       '<h2 style="color:var(--ivory)">What we can document, and what we cannot.</h2>'+
       '<p class="t-lg">Every stone we sell carries a written record: where it was recovered or bought, from whom, on what date, and the invoices and laboratory reports that go with it. We release that file to any buyer who asks for it.</p>'+
       '<p class="t-lg">We do not claim certification under a scheme that does not yet exist for Myanmar coloured stones. We tell you what we know and show you the paper.</p>'+
-      '<a class="link" href="#/mogok">Our sourcing position</a>'+
+      '<a class="link" href="#/about/mining-works">Our sourcing position</a>'+
     '</div>'+
   '</div></section>',
 
@@ -1104,7 +1046,7 @@ var TYPES = ["Ruby","Sapphire","Spinel","Peridot","Tourmaline","Moonstone"];
 var ORIGINS = ["Mogok","Namyarseik","Other Myanmar"];
 var COLOURS = [["Red","#9E2436"],["Pink","#C4657F"],["Blue","#20407E"],["Violet","#8B7BA8"],["Green","#6E8F3C"],["Colourless","#B8C4CC"]];
 var SHAPES = ["Cushion","Oval","Round","Pear","Emerald","Marquise","Cabochon"];
-var PAGE = 9; /* production default is 24 — FR-CAT-007 */
+var PAGE = 24; /* FR-CAT-007 production page size */
 var F;
 
 /* localStorage throws in sandboxed frames and private contexts — never let a
@@ -1401,7 +1343,7 @@ function viewGem(slug){
       '<div class="stack g3"><p class="eyebrow">Provenance</p>'+
         (g.ownMine?'<h3>Recovered from our own workings in Mogok.</h3>':'<h3>Where this stone came from.</h3>')+
         '<p class="t-lg measure">'+esc(g.provenance)+'</p>'+
-        (g.cutByUs?'<p class="measure" data-prd="§13.2.8 Cut">Cut and polished in our Yangon workshop. <a class="link-plain" href="#/mogok">Our craft</a></p>':"")+
+        (g.cutByUs?'<p class="measure" data-prd="§13.2.8 Cut">Cut and polished in our Yangon workshop. <a class="link-plain" href="#/about/mining-works">Our craft</a></p>':"")+
       '</div><div>'+img(g.ownMine?"assets/img/mining-4.jpg":"assets/img/mining-6.jpg", g.ownMine?"Our workings at Mogok":"Sorting and cutting","4/3")+'</div>'+
     '</div></div></div>';
 
@@ -3277,7 +3219,7 @@ function mountChrome(){
     }).join("")+
       '<div class="mobmenu-grp"><b>More</b>'+
         '<a href="#/about/responsible-sourcing">Responsible Sourcing</a>'+
-        '<a href="#/jewellery">Jewellery</a></div>'+
+        '<a href="#/about/the-value">Jewellery</a></div>'+
     '</nav>'+
     '<div class="mobmenu-cta">'+
       '<a class="btn btn-primary" href="#/contact">Enquire</a>'+
@@ -3917,7 +3859,7 @@ route();
 :root{
   --ink:#333333;
   --ink-secondary:#555555;
-  --ink-meta:#777777;
+  --ink-meta:#5C564F;   /* AA-safe on white: 7.0:1 (was #777777 = 4.49:1) */
   --ink-tertiary:#999999;
   --ivory:#FFFFFF;
   --ivory-deep:#F5F5F5;
@@ -4146,7 +4088,8 @@ function heroStart(){
   clearInterval(heroTimer);
   if(!$(".hero")) return;
   if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  heroTimer = setInterval(function(){ heroGo(heroI+1); }, 6000);
+  /* No auto-advance (§17): auto-rotating heroes undercut whichever slide
+     the visitor is actually reading. Dots remain user-controlled. */
 }
 document.addEventListener("click", function(e){
   var d = e.target.closest && e.target.closest("[data-herodot]");
@@ -4402,4 +4345,312 @@ viewCatalogue = function(){
 @media (max-width:1240px){ .nav{display:none} .burger{display:block; margin-left:auto} }
 </style>
 
+<script>
+"use strict";
+/* ==========================================================================
+   Journal — three education articles (§26: "3 articles is enough to launch").
+   Written to the same standard as the rest of the house copy: specific,
+   checkable, no adjectives doing work that facts should do.
+   ========================================================================== */
+var ARTICLES = [
+  {
+    slug:"what-makes-a-mogok-ruby-different",
+    title:"What makes a Mogok ruby different",
+    standfirst:"Marble-hosted geology, almost no iron, and the fluorescence that follows from it.",
+    img:"assets/img/mining-2.jpg",
+    alt:"The Mogok valley workings",
+    body:[
+      ["Geology, not marketing",
+       "Most of the world's ruby forms in basalt, which is rich in iron. Mogok's does not. The valley's rubies grew in metamorphosed limestone — marble — which is unusually poor in iron and rich in chromium. Chromium is what makes a ruby red. Iron is what damps its fluorescence."],
+      ["Why that combination matters",
+       "Because there is so little iron to suppress it, Mogok material fluoresces strongly under ultraviolet light — including the ultraviolet present in ordinary daylight. The stone effectively adds its own red to the red it is already reflecting. This is the origin of the phrase you will hear used about fine Burmese ruby: that it appears lit from within. It is not a figure of speech; it is a measurable optical property, and it is the single clearest reason Mogok material has held a premium for centuries."],
+      ["What it looks like in practice",
+       "Set a Mogok ruby beside a Mozambican stone of the same weight and apparent colour, then move both from a window into a restaurant. The Mozambican stone will usually darken and flatten. The Mogok stone will often hold, and sometimes appear to brighten. We photograph every stone under both daylight-balanced and incandescent light for exactly this reason — a single studio image tells you less than half of what you need to know."],
+      ["What origin does not tell you",
+       "Origin is not a grade. There is ordinary Mogok material and there is exceptional Mozambican material, and a laboratory origin report says where a stone formed, not how good it is. Colour, clarity, cut and treatment status all still apply. Origin narrows the field; it does not settle the question."]
+    ]
+  },
+  {
+    slug:"heated-or-unheated-what-it-means",
+    title:"Heated or unheated: what it means",
+    standfirst:"Why the distinction moves the price, and how a laboratory establishes it.",
+    img:"assets/img/value-4.jpg",
+    alt:"A cut and polished stone",
+    body:[
+      ["What heating actually does",
+       "Heating a ruby or sapphire to somewhere between 800°C and 1,800°C dissolves the fine rutile inclusions — the silk — that scatter light inside the stone, and can shift its colour toward a more saturated red or blue. The change is permanent and, done properly, leaves no residue. It is an accepted and very old practice: the substantial majority of corundum on the market today has been heated."],
+      ["Why unheated stones cost more",
+       "Not because heating is a defect, but because an unheated stone of fine colour is evidence that the ground produced that colour on its own. Most rough does not. Scarcity, not virtue, sets the premium — and at fine quality it is a large one, frequently multiples rather than percentages."],
+      ["How a laboratory decides",
+       "A gemmologist looks for the physical signature heat leaves behind: rutile silk that has begun to dissolve into discontinuous dashes, healed fractures with a fingerprint pattern, melted or recrystallised mineral inclusions, and — under magnification — tension halos around crystals that expanded at different rates from the host. Spectroscopy supports the reading. It is an interpretation of evidence, not a single test, which is why two competent laboratories can occasionally disagree on a borderline stone."],
+      ["What we will and will not tell you",
+       "Where a laboratory has ruled on treatment, we publish the report number and you can verify it with the issuing lab yourself. Where no report exists, the stone's page says the finding is our own house assessment rather than a laboratory determination. We would rather lose a sale to that sentence than have you discover the distinction later."]
+    ]
+  },
+  {
+    slug:"how-to-read-a-laboratory-report",
+    title:"How to read a laboratory report",
+    standfirst:"A line-by-line walk through an origin and treatment report.",
+    img:"assets/img/feature-2.jpg",
+    alt:"A finished piece",
+    body:[
+      ["The four lines that carry the value",
+       "A coloured-stone report runs to a page or more, but four entries do most of the work: <em>Species and variety</em> (is it corundum, and is it ruby or sapphire), <em>Origin</em> (where it formed, usually phrased as an opinion because that is what it is), <em>Treatment</em> or <em>Comment</em> (what has been done to it), and the <em>report number and date</em>. Read those four before anything else."],
+      ["Read the hedging carefully",
+       "Origin is expressed as an opinion — you will see wording along the lines of \"the analysed properties are consistent with those of rubies from Mogok, Myanmar.\" That is the strongest form the science supports, not a weak claim. Conversely, \"no indications of heating\" is meaningfully different from a positive statement that a stone is unheated: it says the evidence for heat was not found. In practice the trade treats it as unheated, but it is worth knowing what the sentence actually says."],
+      ["Trade colour terms are issued, not chosen",
+       "\"Pigeon's Blood\" and \"Royal Blue\" are proprietary designations that particular laboratories apply against their own colour references. They are not free-floating adjectives a seller may adopt. We use such a term only where a laboratory has issued it for that specific stone, and we name the laboratory and report number alongside it every time. A seller using the phrase with no report behind it is telling you something."],
+      ["Verify it yourself",
+       "GRS, Gübelin, Lotus and AIGS all operate public report-verification tools. Every report number we publish is meant to be typed into one. If a number does not resolve, that is worth an email — to them or to us."]
+    ]
+  }
+];
+
+function pgJournal(){
+  return pgHead("Journal","Understanding gemstones","Plain explanations of the things that decide what a coloured stone is worth.")+
+  '<section class="band band-ivory"><div class="wrap">'+
+    '<div class="grid-gems">'+ARTICLES.map(function(a){
+      return '<a class="artcard" href="#/journal/'+a.slug+'">'+img(a.img,a.alt,"3/2")+
+        '<div class="card-t"><span class="card-type">Learn</span>'+
+        '<h4 style="font-size:20px">'+esc(a.title)+'</h4>'+
+        '<p class="t-sm" style="color:var(--ink-meta)">'+esc(a.standfirst)+'</p></div></a>';
+    }).join("")+'</div>'+
+    '<p style="margin-top:var(--s5); font-size:13px; color:var(--ink-meta); max-width:60ch">'+
+    'More articles follow as we write them. We would rather publish three we can stand behind than twelve that restate each other.</p>'+
+  '</div></section>'+
+  ctaBand("Ask us anything about a stone you are considering.");
+}
+
+function pgArticle(slug){
+  var a = ARTICLES.filter(function(x){ return x.slug===slug; })[0];
+  if(!a) return pgJournal();
+  var others = ARTICLES.filter(function(x){ return x.slug!==slug; });
+  return pgHead("Journal · Learn", a.title, a.standfirst)+
+  '<section class="band band-ivory"><div class="wrap"><div class="ed-3">'+
+    '<div class="prose">'+a.body.map(function(s){
+      return '<h3 style="font-size:19px; margin-top:var(--s3)">'+esc(s[0])+'</h3><p>'+s[1]+'</p>';
+    }).join("")+'</div>'+
+    '<div>'+img(a.img,a.alt,"4/5")+'</div>'+
+  '</div></div></section>'+
+  '<section class="band band-ivory-deep band-tight"><div class="wrap">'+
+    '<div class="sec-head"><div class="stack"><p class="eyebrow">Also in the Journal</p><h3>Keep reading</h3></div></div>'+
+    '<div class="ed">'+others.map(function(o){
+      return '<a class="artcard" href="#/journal/'+o.slug+'">'+img(o.img,o.alt,"3/2")+
+        '<div class="card-t"><span class="card-type">Learn</span><h4 style="font-size:19px">'+esc(o.title)+'</h4></div></a>';
+    }).join("")+'</div>'+
+  '</div></section>'+
+  ctaBand("Speak to a specialist.");
+}
+
+/* register: Journal is a real section now, not a stub */
+PAGES["journal"] = [pgJournal,"journal"];
+ARTICLES.forEach(function(a){
+  PAGES["journal/"+a.slug] = [function(){ return pgArticle(a.slug); },"journal"];
+});
+delete STUBS.journal;
+delete STUBS.mogok;
+delete STUBS.jewellery;
+</script>
+
+<style>
+/* breadcrumb / back-to-collection (§8) */
+.crumb{display:flex; align-items:center; gap:10px; padding:var(--s3) 0 0; font-size:12px;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--ink-meta)}
+.crumb a{color:var(--ink-meta); text-decoration:none; border-bottom:1px solid transparent}
+.crumb a:hover{color:var(--ink); border-bottom-color:var(--rule)}
+.crumb .sep{color:var(--rule)}
+.crumb .here{color:var(--ink)}
+/* price-on-request explainer (§12) */
+.por-note{font-size:12.5px; line-height:1.6; color:var(--ink-meta); border-left:2px solid var(--rule);
+  padding:2px 0 2px var(--s2); margin-top:2px}
+/* gem-detail not-found (§8) */
+.nf{padding:var(--s7) 0; display:flex; flex-direction:column; gap:var(--s3); align-items:flex-start; max-width:62ch}
+</style>
+<script>
+"use strict";
+/* ---- breadcrumb + price explainer on the stone page (§8, §12) ---- */
+var _viewGemUx = viewGem;
+viewGem = function(slug){
+  var g = (slug && typeof slug === "object") ? slug
+        : GEMS.filter(function(x){ return x.slug===slug; })[0];
+
+  /* §8: the 404 state was a bare heading and one link */
+  if(!g && typeof slug === "string"){
+    return '<div class="wrap"><div class="nf">'+
+      '<p class="eyebrow">Not found</p>'+
+      '<h1>That stone is no longer listed.</h1>'+
+      '<p class="measure">Stones we have sold keep their page permanently, so a dead link here usually means the '+
+      'reference was mistyped. If you have a stone ID from an email or a conversation, we can pull the record.</p>'+
+      '<div class="hero-cta" style="margin-top:var(--s2)">'+
+        '<a class="btn btn-primary" href="#/gemstones">Browse the collection</a>'+
+        '<a class="btn btn-secondary" href="#/contact">Tell us what you are seeking</a>'+
+      '</div></div></div>';
+  }
+
+  var html = _viewGemUx(slug);
+  if(!g) return html;
+
+  /* breadcrumb above the two-column layout */
+  html = html.replace('<div class="wrap"><div class="det">',
+    '<div class="wrap"><nav class="crumb" aria-label="Breadcrumb">'+
+      '<a href="#/">Home</a><span class="sep" aria-hidden="true">/</span>'+
+      '<a href="#/gemstones">Gemstones</a><span class="sep" aria-hidden="true">/</span>'+
+      '<span class="here">'+esc(g.stoneId)+'</span>'+
+    '</nav><div class="det">');
+
+  /* §12: "price on request" reads as evasive without an anchor */
+  html = html.replace('<p class="t-sm" style="color:var(--ink-meta)">Shown for reference.',
+    '<p class="por-note">Coloured stones are priced individually because no two are alike — weight, colour, '+
+    'clarity and treatment all move the figure, and the market moves under them. Ask and we reply in writing, '+
+    'usually within one business day.</p>'+
+    '<p class="t-sm" style="color:var(--ink-meta)">Shown for reference.');
+
+  return html;
+};
+</script>
+
+<script>
+"use strict";
+/* ==========================================================================
+   Per-route metadata (§19). Hash routing still limits crawlability — the real
+   fix is path-based routing with pre-rendering (P0-7, a separate migration) —
+   but titles, descriptions, canonicals and OG tags are correct per route now,
+   which is what social sharing and any JS-executing crawler will read.
+   ========================================================================== */
+var SITE_URL = "https://spgems-myanmar.com";
+var OG_FALLBACK = "assets/img/hero-4.jpg";
+
+function metaFor(parts, qs){
+  var key = parts.join("/");
+  var T = function(t,d,img){ return {title:t+" | SP Gems", desc:d, img:img||OG_FALLBACK}; };
+
+  if(!parts.length) return T("Natural Myanmar Gemstones from Mogok",
+    "SP Gems mines, cuts and sets Myanmar gemstones from its own workings in the Mogok valley. Trading since 1985, established 2007. Every stone documented: origin, treatment, laboratory report.");
+
+  if(parts[0]==="gemstones" && parts[1]){
+    var g = GEMS.filter(function(x){ return x.slug===parts[1]; })[0];
+    if(g) return T(g.title+", "+g.carat.toFixed(2)+" ct",
+      g.title+" of "+g.carat.toFixed(2)+" ct from "+g.origin+". "+
+      (g.treatment==="unheated"?"Unheated":"Heated")+
+      (g.lab?", "+g.lab+" report "+g.certNo:"")+". "+g.clarity+". Viewing by appointment.");
+    return T("Stone not found","That stone is not in the current catalogue.");
+  }
+  if(parts[0]==="gemstones") return T("Gemstone Collection",
+    "Individually catalogued Myanmar rubies, sapphires and spinels. Full specification, origin, treatment status and laboratory report on every stone. Viewing only — nothing is sold online.");
+
+  var M = {
+    "about/our-story":            T("Our Story","The SanPya family began trading in Mogok in 1985. SP Gems was formally established in 2007 and still works the same valley."),
+    "about/the-value":            T("The Value","Design-led jewellery built around stones from our own workings, led by Aung Kyaw Zin."),
+    "about/mining-works":         T("Mining Works","Our own workings on the eastern flank of the Mogok valley, and the Yangon workshop where every stone is cut."),
+    "about/milestones":           T("Milestones","Four decades in the Mogok valley, set down in order."),
+    "about/csr":                  T("Corporate Social Responsibility","Schooling, water access and landslide support in the valley our people live in."),
+    "about/responsible-sourcing": T("Responsible Sourcing","What we can document and what we cannot. Chain-of-custody records, laboratory reports, and a plain position on the sanctions environment."),
+    "news":                       T("News & Events","Recent recoveries, new pieces and workshop news from SP Gems."),
+    "contact":                    T("Contact","No. 30 A, Pyay Road, Mayangone, Yangon. Telephone, Viber and email. Office hours 9.00–17.00 Myanmar Standard Time."),
+    "journal":                    T("Journal","Plain explanations of origin, treatment and laboratory reports for coloured stones.")
+  };
+  if(M[key]) return M[key];
+  if(parts[0]==="journal" && parts[1]){
+    var a = (typeof ARTICLES!=="undefined") ? ARTICLES.filter(function(x){ return x.slug===parts[1]; })[0] : null;
+    if(a) return T(a.title, a.standfirst, a.img);
+  }
+  if(parts[0]==="admin") return T("Content management","Administration.");
+  return T("Page not found","That address is not part of this site.");
+}
+
+function setMeta(name, val, attr){
+  attr = attr || "name";
+  var el = document.head.querySelector("meta["+attr+"='"+name+"']");
+  if(!el){ el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
+  el.setAttribute("content", val);
+}
+function applyMeta(parts, qs){
+  var m = metaFor(parts, qs);
+  var url = SITE_URL + "/#/" + parts.join("/") + (qs ? "?"+qs : "");
+  document.title = m.title;
+  setMeta("description", m.desc);
+  setMeta("og:title", m.title, "property");
+  setMeta("og:description", m.desc, "property");
+  setMeta("og:type", parts[0]==="gemstones" && parts[1] ? "product" : "website", "property");
+  setMeta("og:url", url, "property");
+  setMeta("og:image", SITE_URL + "/" + m.img, "property");
+  setMeta("og:site_name", "SP Gems", "property");
+  setMeta("twitter:card", "summary_large_image");
+  setMeta("twitter:title", m.title);
+  setMeta("twitter:description", m.desc);
+  setMeta("twitter:image", SITE_URL + "/" + m.img);
+  var link = document.head.querySelector("link[rel=canonical]");
+  if(!link){ link = document.createElement("link"); link.rel="canonical"; document.head.appendChild(link); }
+  link.href = url;
+  setJsonLd(parts);
+}
+
+/* JSON-LD: Organization sitewide, plus Product + BreadcrumbList per stone.
+   No `price` is emitted — nothing is sold online, and a price-free Offer is
+   the honest shape for price-on-request. */
+function setJsonLd(parts){
+  var blocks = [{
+    "@context":"https://schema.org", "@type":"JewelryStore", "name":"SP GEMS & Jewellery",
+    "url":SITE_URL, "logo":SITE_URL+"/assets/img/logo.png",
+    "description":"Myanmar gemstone mining, cutting and fine jewellery. Mogok and Yangon, trading since 1985.",
+    "foundingDate":"2007",
+    "address":{"@type":"PostalAddress","streetAddress":"No. 30 A, Pyay Road, (7 Mile), Mayangone Tsp","addressLocality":"Yangon","addressCountry":"MM","postOfficeBoxNumber":"11061"},
+    "telephone":["+95-1-660-397","+95-1-666-052","+95-1-666-053"],
+    "faxNumber":"+95-1-664-574",
+    "email":"spgems.myanmar@gmail.com",
+    "openingHoursSpecification":[{"@type":"OpeningHoursSpecification",
+      "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens":"09:00","closes":"17:00"}]
+  }];
+
+  if(parts[0]==="gemstones" && parts[1]){
+    var g = GEMS.filter(function(x){ return x.slug===parts[1]; })[0];
+    if(g){
+      var avail = g.availability==="sold" ? "SoldOut" : (g.availability==="reserved" ? "PreOrder" : "InStock");
+      var props = [
+        {"@type":"PropertyValue","name":"Carat weight","value":g.carat.toFixed(2)+" ct"},
+        {"@type":"PropertyValue","name":"Origin","value":g.origin},
+        {"@type":"PropertyValue","name":"Treatment","value":g.treatment==="unheated"?"No indication of heating":"Heated"},
+        {"@type":"PropertyValue","name":"Shape","value":g.shape},
+        {"@type":"PropertyValue","name":"Dimensions","value":g.dims.map(function(d){return d.toFixed(2);}).join(" × ")+" mm"}
+      ];
+      if(g.lab) props.push({"@type":"PropertyValue","name":"Laboratory report","value":g.lab+" "+g.certNo});
+      blocks.push({
+        "@context":"https://schema.org","@type":"Product",
+        "name":g.title+", "+g.carat.toFixed(2)+" ct",
+        "sku":g.stoneId,
+        "description":g.provenance,
+        "brand":{"@type":"Brand","name":"SP Gems"},
+        "additionalProperty":props,
+        "offers":{"@type":"Offer","availability":"https://schema.org/"+avail,
+                  "priceCurrency":"USD","url":SITE_URL+"/#/gemstones/"+g.slug,
+                  "availabilityStarts":undefined}
+      });
+      blocks.push({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":SITE_URL+"/"},
+        {"@type":"ListItem","position":2,"name":"Gemstones","item":SITE_URL+"/#/gemstones"},
+        {"@type":"ListItem","position":3,"name":g.title}
+      ]});
+    }
+  }
+  var old = document.getElementById("ld-json");
+  if(old) old.remove();
+  var s = document.createElement("script");
+  s.type = "application/ld+json"; s.id = "ld-json";
+  s.textContent = JSON.stringify(blocks.length===1 ? blocks[0] : blocks);
+  document.head.appendChild(s);
+}
+
+/* hook metadata into the router */
+var _routeSeo = route;
+route = function(keepScroll){
+  _routeSeo(keepScroll);
+  var hsh = location.hash.replace(/^#/,"") || "/";
+  var qi = hsh.indexOf("?"), path = qi<0?hsh:hsh.slice(0,qi), qs = qi<0?"":hsh.slice(qi+1);
+  try { applyMeta(path.split("/").filter(Boolean), qs); } catch(e){}
+};
+</script>
+
 <script>"use strict";route();</script>
+</body>
+</html>
